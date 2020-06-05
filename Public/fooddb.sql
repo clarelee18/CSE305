@@ -22,7 +22,7 @@ CREATE TABLE User_Details (
   points INTEGER NOT NULL,
   PRIMARY KEY (username)
 );
-----------USING FOREIGN KEY WITH SAME PRIMARY KEY-----------
+
 CREATE TABLE User_Ordering (
   username VARCHAR(128),
   delivery_addr VARCHAR(512) NOT NULL,
@@ -220,16 +220,16 @@ INSERT INTO Category (subcategory, category) VALUES
 
 ---------------------ADD IMAGES-----------------------------------------------
 INSERT INTO Products (productname, image, description, cost) VALUES 
-("Fiji", "!", "The unique mineral profile, which contributes to FIJI Water's signature soft, 
+("Fiji", "Fiji.jpg", "The unique mineral profile, which contributes to FIJI Water's signature soft, 
 smooth taste, reflects The Nature of Water sourced from an artesian aquifer and untouched 
 until you unscrew the cap.", 2000), 
-("Samdasoo", "!", "Following upon the eruption of Jeju Island's Halla Mountain volcano 25,000 years 
+("Samdasoo", "Samdasoo.jpeg", "Following upon the eruption of Jeju Island's Halla Mountain volcano 25,000 years 
 ago, a now famed water was born. Mineral-rich and beneficial Jeju Samdasoo water, a little 
 treasure of the ecosystem, has spread from Halla Mountain to the world.",1200),
-("Sprite", "!", "A delectable lemon-lime beverage best served cold and fizzy, and possibly 
+("Sprite", "Sprite.jpg", "A delectable lemon-lime beverage best served cold and fizzy, and possibly 
 with lemonade or alcohol, or both. It has possibly the shortest half-life of any soda, as it
  goes flat within minutes. ", 1800),
-("Pepsi", "!", "Pepsi is a carbonated soft drink manufactured by PepsiCo. Originally created and 
+("Pepsi", "Pepsi.jpeg", "Pepsi is a carbonated soft drink manufactured by PepsiCo. Originally created and 
 developed in 1893 by Caleb Bradham and introduced as Brad's Drink, it was renamed as Pepsi-Cola 
 in 1898, and then shortened to Pepsi in 1961.", 1500),
 ("Latte", "!", "Cafe latte is espresso served with plenty of steamed milk, which makes it smooth, 
