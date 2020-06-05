@@ -291,72 +291,6 @@ omega-3 fatty acids.", 15000),
 ("Dried Squid", "!", "Dried shredded squid is a dried, shredded, seasoned, seafood product, made
  from squid, commonly found in coastal Asian countries, Russia, and Hawaii.", 15000);
 
-/*
-INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
-(oid_0, ), 
-(oid_1, ),
-(oid_2, ),
-(oid_3, ),
-(oid_4, );
-
-INSERT INTO Payment (pid, payment_method, payment_date) VALUES 
-(pid_0, ), 
-(pid_1, ),
-(pid_2, ),
-(pid_3, ),
-(pid_4, );
-
-INSERT INTO Products (prodid, cid, name, description, expiration_date, cost) VALUES 
-("prod_0", "cid_0", "Kirkland Signature Bottled Water", "Kirkland Signature Bottled Water", "2020-07-01", 1000), 
-("prod_1", "cid_0", "Voss Artesian Water", "Voss Artesian Water", "2020-07-02", 1100),
-("prod_2", "cid_0", "Fiji", "Fiji", "2020-07-03", 1200),
-("prod_3", "cid_0", "Samdasoo", "Samdasoo", "2020-07-04", 1300),
-("prod_4", "cid_1", "Sprite", "Sprite", "2020-07-05", 500),
-("prod_5", "cid_1", "Dr. Pepper", "Dr. Pepper", "2020-07-06", 600), 
-("prod_6", "cid_1", "Coca-Cola", "Coca-Cola", "2020-07-07", 700),
-("prod_7", "cid_1", "Pepsi", "Pepsi", "2020-07-08", 800),
-("prod_8", "cid_1", "Mountain Dew", "Mountain Dew", "2020-07-09", 900),
-("prod_9", "cid_2", "Latte", "Latte", "2020-07-10", 1200),
-("prod_10", "cid_2", "Cappuccino", "Cappuccino", "2020-07-11", 1300), 
-("prod_11", "cid_2", "Espresso", "Espresso", "2020-07-12", 1400),
-("prod_12", "cid_2", "Americano", "Americano", "2020-07-13", 1500),
-("prod_13", "cid_3", "Green Tea", "Green Tea", "2020-07-14", 2000),
-("prod_14", "cid_3", "Peppermint Tea", "Peppermint Tea", "2020-07-15", 2100),
-("prod_15", "cid_3", "Ginseng Root Tea", "Ginseng Root Tea", "2020-07-16", 2200), 
-("prod_16", "cid_3", "Black Tea", "Black Tea", "2020-07-17", 2300),
-("prod_17", "cid_3", "Oolong Tea", "Oolong Tea", "2020-07-18", 2400),
-("prod_18", "cid_3", "Moringa Tea", "Moringa Tea", "2020-07-19", 2500),
-("prod_19", "cid_3", "Rooibos Tea", "Rooibos Tea", "2020-07-20", 2600),
-("prod_20", "cid_4", "Orange Juice", "Orange Juice", "2020-07-21", 2500), 
-("prod_21", "cid_4", "Lemonade", "Lemonade", "2020-07-22", 2600),
-("prod_22", "cid_4", "Apple Juice", "Apple Juice", "2020-07-23", 2700),
-("prod_23", "cid_4", "Mango Juice", "Mango Juice", "2020-07-24", 2800),
-("prod_24", "cid_4", "Grape Juice", "Grape Juice", "2020-07-25", 2900),
-("prod_25", "cid_5", "Chocolate Milk", "Chocolate Milk", "2020-07-26", 2200), 
-("prod_26", "cid_5", "Strawberry Milk", "Strawberry Milk", "2020-07-27", 2300),
-("prod_27", "cid_5", "Banana Milk", "Banana Milk", "2020-07-28", 2400),
-("prod_28", "cid_5", "Low-fat Milk", "Low-fat Milk", "2020-07-29", 2500),
-("prod_29", "cid_6", "Chuck", "Chuck", "2020-07-30", 2600),
-("prod_30", "cid_6", "Rib", "Rib", "2020-07-21", 2500), 
-("prod_31", "cid_6", "Flank", "Flank", "2020-07-22", 2600),
-("prod_32", "cid_6", "Brisket", "Brisket", "2020-07-23", 2700),
-("prod_33", "cid_6", "Neck", "Neck", "2020-07-24", 2800),
-("prod_34", "cid_6", "Breast", "Breast", "2020-07-25", 2900),
-("prod_35", "cid_7", "Bacon", "Bacon", "2020-07-26", 2200), 
-("prod_36", "cid_7", "Smoked Ham", "Smoked Ham", "2020-07-27", 2300),
-("prod_37", "cid_7", "Sausage", "Sausage", "2020-07-28", 2400),
-("prod_38", "cid_7", "Spareribs", "Spareribs", "2020-07-29", 2500),
-("prod_39", "cid_7", "Tenderloin", "Tenderloin", "2020-07-30", 2600),
-("prod_40", "cid_8", "Breast", "Breast", "2020-07-21", 2500), 
-("prod_41", "cid_8", "Liver", "Liver", "2020-07-22", 2600),
-("prod_42", "cid_8", "Wing", "Wing", "2020-07-23", 2700),
-("prod_43", "cid_8", "Thigh", "Thigh", "2020-07-24", 2800),
-("prod_44", "cid_8", "Leg", "Leg", "2020-07-25", 2900),
-("prod_45", "cid_9", "Duck", "Duck", "2020-07-26", 2200), 
-("prod_46", "cid_9", "Chicken", "Chicken", "2020-07-27", 2300),
-("prod_47", "cid_9", "Quail", "Quail", "2020-07-28", 2400),
-("prod_48", "cid_10", "Mackerel", "Mackerel", "2020-07-29", 2500),
-("prod_49", "cid_10", "Tuna", "Tuna", "2020-07-30", 2600);
 
 /* payment moethod: bank transfer, cash, credit card, mobile payment*/
 /* date: YYYY-MM-DD time: hh:mm:ss*/
@@ -406,7 +340,7 @@ INSERT INTO Shopping_Cart (cid, number_of_items) VALUES
 (4, 1),
 (5, 1), 
 (6, 1),
-(7, 1),
+(7, 1)
 ;
 
 INSERT INTO Cart_Item (ciid, quantity) VALUES 
