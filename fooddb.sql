@@ -19,7 +19,7 @@ CREATE TABLE User_Details (
 	first_name VARCHAR(128) NOT NULL,
 	last_name VARCHAR(128) NOT NULL,
 	email VARCHAR(128) NOT NULL,
-  dob DATE,
+  birthdate DATE,
   points INTEGER NOT NULL,
   PRIMARY KEY (username)
 );
@@ -151,7 +151,7 @@ CREATE TABLE Has (
 
 ------------------------------------------------------------------------------
 
-INSERT INTO Users (uid, username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, dob, credit_card_number, date_joined, points) VALUES 
+INSERT INTO User_Details (username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, birthdate, credit_card_number, date_joined, points) VALUES 
 ("user_0", "Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "seoul", "123-456", "010-1111-1111", "1998-01-01", "12345678", "2020-01-01", 200),
 ("user_1", "Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "pusan", "789-012", "010-2222-2222", "1998-02-01", "90123456", "2020-02-01", 0),
 ("user_2", "Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "incheon", "345-678", "010-3333-3333", "1998-03-01", "78901234", "2020-03-01", 100),
