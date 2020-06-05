@@ -76,7 +76,7 @@ CREATE TABLE Order_Shipping_Fee (
 );
 
 CREATE TABLE Shopping_Cart (
-  sid INTEGER NOT NULL,
+  cid INTEGER NOT NULL,
   number_of_items INTEGER NOT NULL,
   PRIMARY KEY (sid)
 );
@@ -266,21 +266,20 @@ INSERT INTO Payment (pid, payment_method, payment_date, payment_time) VALUES
 (6, "mobile payment", "2020-04-23", "15:40:45"),
 (7, "cash", "2020-06-01", "17:17:01"),
 (8, "bank transfer", "2019-01-15", "09:42:45"),
-(8, "bank transfer", "2020-05-09", "10:35:09");
+(9, "bank transfer", "2020-05-09", "10:35:09");
 
 
 /*
-INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
-(oid_0, ), 
-(oid_1, ),
-(oid_2, ),
-(oid_3, ),
-(oid_4, );
+INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALUES 
+(1, "2019-06-09", , ),
+(2, "2020-02-10", , ),
+(3, "2020-04-17", , ),
+(4, "2019-09-12", , ),
+(5, "2019-11-23", , ),
+(6, "2020-04-25", , ),
+(7, "2020-06-03", , ),
+(8, "2019-01-17", , ),
+(9, "2020-05-13", , );
 
-INSERT INTO Payment (pid, payment_method, payment_date) VALUES 
-(pid_0, ), 
-(pid_1, ),
-(pid_2, ),
-(pid_3, ),
-(pid_4, );
+
 */
