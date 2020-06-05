@@ -271,16 +271,25 @@ accompanying fat). People who eat enough protein are more likely to maintain mus
 ("Chicken Thigh", "!", "Chicken thighs are the top part of the chicken leg where it connects to
  the body (as opposed to the drumstick, which is the bottom half). Because they are dark meat, chicken
   thighs cook up moist and tender.", 1800),
-(),
-(),
-(),
-(),
-(),
-(),
-(),
-(),
-(),
-();
+("Duck Egg", "!", "A duck egg’s white tends to be nearly transparent, lacking the slight yellowish tint
+ some chicken eggs have. Its yolk, though, is what’s so prized by chefs: a duck yolk is much bigger than
+  a chicken yolk.", 1000),
+("Chicken Egg", "!", "In the chicken egg, there is a balance of numerous, high quality nutrients, many
+ of which are highly bioavailable. The egg confers a multitude of health benefits to consumers emphasizing
+  its classification as a functional food.", 300),
+("Tuna", "!", "A tuna is a saltwater fish that belongs to the tribe Thunnini, a subgrouping of the 
+Scombridae family. The Thunnini comprise 15 species across five genera, the sizes of which vary greatly, 
+ranging from the bullet tuna up to the Atlantic bluefin tuna. ", 40000),
+("Salmon", "!", "Salmon is a common food classified as an oily fish with a rich content of protein and 
+omega-3 fatty acids.", 15000),
+("Scallop", "!", "An edible bivalve mollusk with a ribbed fan-shaped shell. Scallops swim by rapidly
+ opening and closing the shell valves.", 12000),
+("Oyster", "!", "A bivalve mollusk with an irregular long shell that is normally attached to rocks
+ and that is consumed as food.", 20000),
+("Laver", "!", "An edible seaweed with thin flat fronds of a reddish-purple and green colour
+ that becomes black when dry.", 3000),
+("Dried Squid", "!", "Dried shredded squid is a dried, shredded, seasoned, seafood product, made
+ from squid, commonly found in coastal Asian countries, Russia, and Hawaii.", 15000);
 
 /*
 INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
@@ -418,3 +427,4 @@ INSERT INTO Cart_Item (ciid, quantity) VALUES
 (15, 1),
 (16, 1)
 ;
+
