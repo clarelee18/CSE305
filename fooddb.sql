@@ -241,6 +241,45 @@ dating to the 1970s, or from Italy. The term 'caffè Americano' specifically is 
 caffeine-free. Some research has suggested that the oils in peppermint may have a number of other 
 health benefits, such as fresher breath, better digestion, and reduced pain from headaches. 
 Peppermint tea also has antibacterial properties.", 1400),
+("Rooibos Tea", "!", "Smoky, sweet, woody, grassy, vanilla, floral, geranium, honey, herbal and 
+caramel are just a handful of the words that can describe the flavor spectrum of sipping a rooibos 
+tea. Because it’s an herb, rooibos is completely caffeine free. So it’s a popular alternative to 
+traditional caffeinated beverages like tea or coffee.", 1900),
+("Orange Juice", "!", "Orange juice is a liquid extract of the orange tree fruit, produced by 
+squeezing or reaming oranges. It comes in several different varieties, including blood orange, 
+navel oranges, valencia orange, clementine, and tangerine. ", 3000),
+("Apple Juice", "!", "Apple juice can be useful for rehydrating when you're sick. Its disease-fighting 
+plant compounds may also protect your heart and brain as you age. However, apple juice is not very 
+filling compared to whole apples, nor does it offer much fiber, vitamins, or minerals.", 2900),
+("Strawberry Milk", "!", "Strawberry Milk is simply milk, mixed with either natural or artificial 
+strawberry fruit flavoring.", 3000),
+("Banana Milk", "!", "High in potassium, vitamin B6 and pectin, banana milk is nutritious and full of 
+filling fiber. It has a light, sweet flavor.", 3000),
+("Beef Chuck Steak", "!", "Chuck steak is a cut of beef and is part of the sub-prime cut known as the chuck. 
+The typical chuck steak is a rectangular cut, about 2.54cm thick and containing parts of the shoulder 
+bones, and is often known as a '7-bone steak,' as the shape of the shoulder bone in cross section 
+resembles the numeral '7'.", 7000),
+("Beef Short Ribs", "!", "Short ribs are tender and have a lot more flavor than some other cuts. It has the 
+bone in it, so when you serve it, it has a nice look to it.", 5300),
+("Bacon", "!", "Bacon is a type of salt-cured pork. Bacon is prepared from several different cuts of meat, 
+typically from the pork belly or from back cuts, which have less fat than the belly. ", 5500),
+("Sausage", "!", "Sausages are a meat product usually made from ground meat, often pork, beef, or poultry, 
+along with salt, spices and other flavourings. ", 3000),
+("Chicken Breast", "!", "Chicken breast is a great source of lean protein (protein without a lot of 
+accompanying fat). People who eat enough protein are more likely to maintain muscle mass and preserve
+ a healthy metabolism.", 3200),
+("Chicken Thigh", "!", "Chicken thighs are the top part of the chicken leg where it connects to
+ the body (as opposed to the drumstick, which is the bottom half). Because they are dark meat, chicken
+  thighs cook up moist and tender.", 1800),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
 ();
 
 /*
