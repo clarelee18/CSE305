@@ -75,7 +75,7 @@ CREATE TABLE Order_Shipping_Fee (
 );
 
 CREATE TABLE Shopping_Cart (
-  cid INTEGER NOT NULL,
+  sid INTEGER NOT NULL,
   number_of_items INTEGER NOT NULL, -- assertion: should be at least 1
   PRIMARY KEY (sid)
 );
@@ -178,7 +178,7 @@ INSERT INTO User_Ordering (username, delivery_addr, contact_number) VALUES
 ("mark99", "seoul", "01048573837"),
 ("mark99", "incheon", "01048573837"),
 ("kid", "busan", "01056462734"),
-("kelly00", "incheon", "01058495838"),
+("kelly00", "busan", "01058495838"),
 ("sev", "daegu", "01042322936"),
 ("kid", "daejeon", "01023163789"),
 ("jean97", "ulsan", "01012345678");
@@ -219,7 +219,7 @@ INSERT INTO Category (subcategory, category) VALUES
 ("Instant Noodles", "Processed Food");
 
 ---------------------ADD IMAGES-----------------------------------------------
-INSERT INTO Products (prodid, image, description, cost) VALUES 
+INSERT INTO Products (productname, image, description, cost) VALUES 
 ("Fiji", "!", "The unique mineral profile, which contributes to FIJI Water's signature soft, 
 smooth taste, reflects The Nature of Water sourced from an artesian aquifer and untouched 
 until you unscrew the cap.", 2000), 
@@ -232,10 +232,10 @@ with lemonade or alcohol, or both. It has possibly the shortest half-life of any
 ("Pepsi", "!", "Pepsi is a carbonated soft drink manufactured by PepsiCo. Originally created and 
 developed in 1893 by Caleb Bradham and introduced as Brad's Drink, it was renamed as Pepsi-Cola 
 in 1898, and then shortened to Pepsi in 1961.", 1500),
-("Latte", "!", "CafÃ© latte is espresso served with plenty of steamed milk, which makes it smooth, 
+("Latte", "!", "Cafe latte is espresso served with plenty of steamed milk, which makes it smooth, 
 light brown, and not bitter or harsh.", 2900),
 ("Americano", "!", "The term 'Americano' means 'American', and it derives from American Spanish, 
-dating to the 1970s, or from Italy. The term 'caffÃ¨ Americano' specifically is Italian for 
+dating to the 1970s, or from Italy. The term 'caffe Americano' specifically is Italian for 
 'American coffee'.", 2200),
 ("Peppermint Tea", "!", "Peppermint tea is a popular herbal tea that is naturally calorie- and 
 caffeine-free. Some research has suggested that the oils in peppermint may have a number of other 
@@ -243,7 +243,7 @@ health benefits, such as fresher breath, better digestion, and reduced pain from
 Peppermint tea also has antibacterial properties.", 1400),
 ("Rooibos Tea", "!", "Smoky, sweet, woody, grassy, vanilla, floral, geranium, honey, herbal and 
 caramel are just a handful of the words that can describe the flavor spectrum of sipping a rooibos 
-tea. Because itâ€™s an herb, rooibos is completely caffeine free. So itâ€™s a popular alternative to 
+tea. Because it¡¯s an herb, rooibos is completely caffeine free. So it¡¯s a popular alternative to 
 traditional caffeinated beverages like tea or coffee.", 1900),
 ("Orange Juice", "!", "Orange juice is a liquid extract of the orange tree fruit, produced by 
 squeezing or reaming oranges. It comes in several different varieties, including blood orange, 
@@ -271,8 +271,8 @@ accompanying fat). People who eat enough protein are more likely to maintain mus
 ("Chicken Thigh", "!", "Chicken thighs are the top part of the chicken leg where it connects to
  the body (as opposed to the drumstick, which is the bottom half). Because they are dark meat, chicken
   thighs cook up moist and tender.", 1800),
-("Duck Egg", "!", "A duck eggâ€™s white tends to be nearly transparent, lacking the slight yellowish tint
- some chicken eggs have. Its yolk, though, is whatâ€™s so prized by chefs: a duck yolk is much bigger than
+("Duck Egg", "!", "A duck egg¡¯s white tends to be nearly transparent, lacking the slight yellowish tint
+ some chicken eggs have. Its yolk, though, is what¡¯s so prized by chefs: a duck yolk is much bigger than
   a chicken yolk.", 1000),
 ("Chicken Egg", "!", "In the chicken egg, there is a balance of numerous, high quality nutrients, many
  of which are highly bioavailable. The egg confers a multitude of health benefits to consumers emphasizing
@@ -333,7 +333,7 @@ INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES
 ;
 */
 
-INSERT INTO Shopping_Cart (cid, number_of_items) VALUES 
+INSERT INTO Shopping_Cart (sid, number_of_items) VALUES 
 (1, 1),
 (2, 1),
 (3, 1),
@@ -361,4 +361,3 @@ INSERT INTO Cart_Item (ciid, quantity) VALUES
 (15, 1),
 (16, 1)
 ;
-
