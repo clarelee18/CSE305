@@ -170,9 +170,9 @@ CREATE TABLE Has (
 INSERT INTO User_Details (username, password, first_name, last_name, email, birthdate, points) VALUES 
 ("Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "1998-01-01", 200),
 ("Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "1998-02-01", 0),
-("Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "1998-03-01", 100);
---("Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "1998-05-01", 300),
---("Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "1998-07-01", 200);
+("Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "1998-03-01", 100),
+("Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "1998-05-01", 300),
+("Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "1998-07-01", 200);
 
 /*
 INSERT INTO User_Details (username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, birthdate, credit_card_number, date_joined, points) VALUES 
