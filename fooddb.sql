@@ -12,80 +12,77 @@ GRANT ALL PRIVILEGES ON fooddb.* to localhost IDENTIFIED BY 'root';
 
 USE fooddb;
 
-CREATE TABLE Users (
-	uid VARCHAR(128) NOT NULL,
-	username VARCHAR(128) NOT NULL, -- assertion: should be unique
-	password VARCHAR(128) NOT NULL, -- assertion: contains at least 5 characters, at least 1 number, and at least 1 special character (!@#$%^&*)
+
+CREATE TABLE User_Details (
+  username VARCHAR(128) NOT NULL, -- assertion: should be unique
+  password VARCHAR(128) NOT NULL, -- assertion: contains at least 5 characters, at least 1 number, and at least 1 special character (!@#$%^&*)
 	first_name VARCHAR(128) NOT NULL,
 	last_name VARCHAR(128) NOT NULL,
 	email VARCHAR(128) NOT NULL,
-	delivery_addr VARCHAR(512) NOT NULL,
-	postal_code VARCHAR(128),
-	phone_number VARCHAR(128) NOT NULL,
-	dob DATE,                       -- assertion: to confirm user is over age 18
-	credit_card_number VARCHAR(128),
-	date_joined DATE,
-	points INTEGER, -- NOT NULL
-	PRIMARY KEY (uid)
+  birthdate DATE,
+  points INTEGER NOT NULL,
+  PRIMARY KEY (username)
+);
+----------USING FOREIGN KEY WITH SAME PRIMARY KEY-----------
+CREATE TABLE User_Ordering (
+  username VARCHAR(128) NOT NULL,
+  delivery_addr VARCHAR(512) NOT NULL,
+  contact_number VARCHAR(128) NOT NULL,
+  credit_card_number VARCHAR(128),
+  PRIMARY KEY (username),
+  CONSTRAINT fk_user_details_username FOREIGN KEY (username) REFERENCES User_Details(username) ON DELETE SET NULL
 );
 
-CREATE TABLE Parent_Category (
-  parent_cid VARCHAR(128) NOT NULL,
-  name VARCHAR(128) NOT NULL,
-  number_of_children INTEGER NOT NULL,
-  PRIMARY KEY (parent_cid)
+CREATE TABLE User_Address (
+  delivery_addr VARCHAR(512) NOT NULL,
+  postal_code INTEGER NOT NULL
+  PRIMARY KEY (delivery_addr)
 );
 
 CREATE TABLE Category (
-  cid VARCHAR(128) NOT NULL,
-  name VARCHAR(128) NOT NULL,
-  parent_cid VARCHAR(128),
-  PRIMARY KEY (cid),
-  CONSTRAINT fk_category_parent_cid FOREIGN KEY (parent_cid) REFERENCES Parent_Category(parent_cid) ON DELETE SET NULL
+  subcategory VARCHAR(128) NOT NULL,
+  category VARCHAR(128),
+  PRIMARY KEY (subcategory),
 );
 
 CREATE TABLE Products (
   prodid VARCHAR(128) NOT NULL,
-  cid VARCHAR(128),
-  name VARCHAR(128) NOT NULL,
+  image VARCHAR(128),
   description VARCHAR(512),
-  expiration_date DATE, 
-  cost DOUBLE NOT NULL,
-  manufacturer VARCHAR(128),
-  PRIMARY KEY (prodid),
-  CONSTRAINT fk_products_cid FOREIGN KEY (cid) REFERENCES Category (cid) ON DELETE SET NULL
+  cost INTEGER NOT NULL,
+  PRIMARY KEY (prodid)
 );
 
 CREATE TABLE Payment (
-  pid VARCHAR(128) NOT NULL,
+  pid INTEGER NOT NULL,
   payment_method VARCHAR(128) NOT NULL,
-  payment_date DATE NOT NULL,
+  payment_time TIME NOT NULL,
   PRIMARY KEY (pid)
 );
 
 CREATE TABLE Order_History (
-  oid VARCHAR(128) NOT NULL,
-  prodid VARCHAR(128),
-  pid VARCHAR(128),
-  order_date DATE NOT NULL,
-  date_shipped DATE,
-  total_price DOUBLE NOT NULL,
-  quantity INTEGER NOT NULL,
-  delivery_charge DOUBLE NOT NULL,
-  PRIMARY KEY (oid),
-  CONSTRAINT fk_order_prodid FOREIGN KEY (prodid) REFERENCES Products (prodid) ON DELETE SET NULL,
-  CONSTRAINT fk_order_pid FOREIGN KEY (pid) REFERENCES Payment (pid) ON DELETE SET NULL
+  oid INTEGER NOT NULL,
+  order_time TIME NOT NULL,
+  shipping_date DATE NOT NULL,
+  total_price INTEGER NOT NULL,
+  total_quantity INTEGER NOT NULL,
+  PRIMARY KEY (oid)
 );
 
-CREATE TABLE Shopping_cart (
-  sid VARCHAR(128) NOT NULL,
-  recently_updated_date DATE,
-  number_of_products INTEGER NOT NULL,
+CREATE TABLE Order_Shipping_Fee (
+  total_price INTEGER NOT NULL,
+  delivery_charge INTEGER NOT NULL,
+  PRIMARY KEY(total_price)
+);
+
+CREATE TABLE Shopping_Cart (
+  sid INTEGER NOT NULL,
+  number_of_items INTEGER NOT NULL,
   PRIMARY KEY (sid)
 );
 
-CREATE TABLE Cartitem (
-  ciid VARCHAR(128) NOT NULL,
+CREATE TABLE Cart_Item (
+  ciid INTEGER NOT NULL,
   quantity INTEGER NOT NULL,
   PRIMARY KEY (ciid)
 );
@@ -172,7 +169,7 @@ CREATE TABLE Has (
 
 ------------------------------------------------------------------------------
 
-INSERT INTO Users (uid, username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, dob, credit_card_number, date_joined, points) VALUES 
+INSERT INTO User_Details (username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, birthdate, credit_card_number, date_joined, points) VALUES 
 ("user_0", "Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "seoul", "123-456", "010-1111-1111", "1998-01-01", "12345678", "2020-01-01", 200),
 ("user_1", "Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "pusan", "789-012", "010-2222-2222", "1998-02-01", "90123456", "2020-02-01", 0),
 ("user_2", "Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "incheon", "345-678", "010-3333-3333", "1998-03-01", "78901234", "2020-03-01", 100),
