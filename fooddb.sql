@@ -49,7 +49,7 @@ CREATE TABLE Products (
   prodid VARCHAR(128) NOT NULL,
   image VARCHAR(128),
   description VARCHAR(512),
-  cost DOUBLE NOT NULL,
+  cost INTEGER NOT NULL,
   PRIMARY KEY (prodid)
 );
 
