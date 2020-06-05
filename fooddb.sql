@@ -77,13 +77,13 @@ CREATE TABLE Order_Shipping_Fee (
 
 CREATE TABLE Shopping_Cart (
   cid INTEGER NOT NULL,
-  number_of_items INTEGER NOT NULL,
+  number_of_items INTEGER NOT NULL, -- assertion: should be at least 1
   PRIMARY KEY (sid)
 );
 
 CREATE TABLE Cart_Item (
   ciid INTEGER NOT NULL,
-  quantity INTEGER NOT NULL,
+  quantity INTEGER NOT NULL, -- assertion: should be at least 1
   PRIMARY KEY (ciid)
 );
 
@@ -192,32 +192,32 @@ INSERT INTO User_Address (delivery_addr, postal_code) VALUES
 ("daejeon", 457),
 ("ulsan", 856);
 
-INSERT INTO Category (cid, name, parent_cid) VALUES 
-("cid_0", "Water", "parct_0"), 
-("cid_1", "Soda", "parct_0"),
-("cid_2", "Coffee", "parct_0"),
-("cid_3", "Tea", "parct_0"),
-("cid_4", "Juice", "parct_0"),
-("cid_5", "Milk", "parct_0"), 
-("cid_6", "Beef", "parct_1"),
-("cid_7", "Pork", "parct_1"),
-("cid_8", "Chicken", "parct_1"),
-("cid_9", "Eggs", "parct_1"),
-("cid_10", "Fish", "parct_2"), 
-("cid_11", "Shellfish & Snails", "parct_2"),
-("cid_12", "Dried Seafoods", "parct_2"),
-("cid_13", "Chocolate", "parct_3"),
-("cid_14", "Snacks", "parct_3"),
-("cid_15", "Bread", "parct_3"), 
-("cid_16", "Ice Cream", "parct_3"),
-("cid_17", "Candy", "parct_3"),
-("cid_18", "Noodles", "parct_4"),
-("cid_19", "Jams", "parct_4"),
-("cid_20", "Sauces", "parct_4"), 
-("cid_21", "Seasonings & Spices", "parct_4"),
-("cid_22", "Oils", "parct_4"),
-("cid_23", "Canned Goods", "parct_4"),
-("cid_24", "Instant Noodles", "parct_4");
+INSERT INTO Category (subcategory, category) VALUES 
+("Water", "Water & Beverages"), 
+("Soda", "Water & Beverages"),
+("Coffee", "Water & Beverages"),
+("Tea", "Water & Beverages"),
+("Juice", "Water & Beverages"),
+("Milk", "Water & Beverages"), 
+("Beef", "Meat & Poultry"),
+("Pork", "Meat & Poultry"),
+("Chicken", "Meat & Poultry"),
+("Eggs", "Meat & Poultry"),
+("Fish", "Seafood"), 
+("Shellfish & Snails", "Seafood"),
+("Dried Seafoods", "Seafood"),
+("Chocolate", "Bread & Snacks"),
+("Snacks", "Bread & Snacks"),
+("Bread", "Bread & Snacks"), 
+("Ice Cream", "Bread & Snacks"),
+("Candy", "Bread & Snacks"),
+("Noodles", "Processed Food"),
+("Jams", "Processed Food"),
+("Sauces", "Processed Food"), 
+("Seasonings & Spices", "Processed Food"),
+("Oils", "Processed Food"),
+("Canned Goods", "Processed Food"),
+("Instant Noodles", "Processed Food");
 
 ---------------------ADD IMAGES-----------------------------------------------
 INSERT INTO Products (prodid, image, description, cost) VALUES 
@@ -336,6 +336,47 @@ INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALU
 (7, "2020-06-03", , ),
 (8, "2019-01-17", , ),
 (9, "2020-05-13", , );
-
 */
 
+/*
+INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES 
+( , 2000),
+( , 0),
+( , 2000),
+( , 0),
+( , 0),
+( , 2000),
+( , 2000),
+( , 2000),
+( , 0)
+;
+*/
+
+INSERT INTO Shopping_Cart (cid, number_of_items) VALUES 
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1), 
+(6, 1),
+(7, 1),
+;
+
+INSERT INTO Cart_Item (ciid, quantity) VALUES 
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1), 
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1)
+;
