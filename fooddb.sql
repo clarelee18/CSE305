@@ -12,7 +12,6 @@ GRANT ALL PRIVILEGES ON fooddb.* to localhost IDENTIFIED BY 'root';
 
 USE fooddb;
 
-
 CREATE TABLE User_Details (
   username VARCHAR(128) NOT NULL, -- assertion: should be unique
   password VARCHAR(128) NOT NULL, -- assertion: contains at least 5 characters, at least 1 number, and at least 1 special character (!@#$%^&*)
@@ -25,32 +24,33 @@ CREATE TABLE User_Details (
 );
 ----------USING FOREIGN KEY WITH SAME PRIMARY KEY-----------
 CREATE TABLE User_Ordering (
-  username VARCHAR(128) NOT NULL,
+  username VARCHAR(128),
   delivery_addr VARCHAR(512) NOT NULL,
   contact_number VARCHAR(128) NOT NULL,
   credit_card_number VARCHAR(128),
   PRIMARY KEY (username),
-  CONSTRAINT fk_user_details_username FOREIGN KEY (username) REFERENCES User_Details(username) ON DELETE SET NULL
+  CONSTRAINT fk_user_ordering_username FOREIGN KEY (username) REFERENCES User_Details (username)
 );
+
 
 CREATE TABLE User_Address (
   delivery_addr VARCHAR(512) NOT NULL,
-  postal_code INTEGER NOT NULL
+  postal_code INTEGER NOT NULL,
   PRIMARY KEY (delivery_addr)
 );
 
 CREATE TABLE Category (
   subcategory VARCHAR(128) NOT NULL,
   category VARCHAR(128),
-  PRIMARY KEY (subcategory),
+  PRIMARY KEY (subcategory)
 );
 
 CREATE TABLE Products (
-  prodid VARCHAR(128) NOT NULL,
+  productname VARCHAR(128) NOT NULL,
   image VARCHAR(128),
   description VARCHAR(512),
   cost INTEGER NOT NULL,
-  PRIMARY KEY (prodid)
+  PRIMARY KEY (productname)
 );
 
 CREATE TABLE Payment (
@@ -87,7 +87,7 @@ CREATE TABLE Cart_Item (
   PRIMARY KEY (ciid)
 );
 
-/*tables that relate entities*/
+--tables that relate entities
 /*  all the keys: 
     username VARCHAR(128)
     productname VARCHAR(128)
@@ -98,77 +98,83 @@ CREATE TABLE Cart_Item (
     oid INTEGER 
 */
 
-/* User_Details (Manages) (Product (becomes) Cart_Item) */
+--User_Details (Manages) (Product (becomes) Cart_Item)
 CREATE TABLE Manages (
   username VARCHAR(128),
   productname VARCHAR(128),
   ciid INTEGER,
-  PRIMARY KEY (uid, prodid, ciid),
-  FOREIGN KEY (uid) REFERENCES Users_Details (uid), 
-  FOREIGN KEY (productname) REFERENCES Products(productname),
-  FOREIGN KEY (ciid) REFERENCES Cart                                          item (ciid)
+  PRIMARY KEY (username, productname, ciid),
+  CONSTRAINT fk_manages_username FOREIGN KEY (username) REFERENCES User_Details (username), 
+  CONSTRAINT fk_manages_productname FOREIGN KEY (productname) REFERENCES Products (productname),
+  CONSTRAINT fk_manages_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
-/* User_Details (Makes) Payment*/
+--User_Details (Makes) Payment
 CREATE TABLE Makes (
   username VARCHAR(128),
   pid INTEGER,
   PRIMARY KEY (username, pid),
-  FOREIGN KEY (username) REFERENCES Users_Details (username), 
-  FOREIGN KEY (pid) REFERENCES Payment (pid)
+  CONSTRAINT fk_makes_username FOREIGN KEY (username) REFERENCES User_Details (username), 
+  CONSTRAINT fk_makes_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
-/* Product (Belongs_to) Category */
+--Product (Belongs_to) Category
 CREATE TABLE Belongs_to (
   productname VARCHAR(128),
   subcategory VARCHAR(128),
   PRIMARY KEY (productname, subcategory),
-  FOREIGN KEY (subcategory) REFERENCES Category (subcategory), 
-  FOREIGN KEY (productname) REFERENCES Products (productname)
+  CONSTRAINT fk_belongs_to_subcategory FOREIGN KEY (subcategory) REFERENCES Category (subcategory), 
+  CONSTRAINT fk_belongs_to_productname FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
-/* Product (Becomes) Cart_Item */
+--Product (Becomes) Cart_Item
 CREATE TABLE Becomes (
   productname VARCHAR(128),
   ciid INTEGER,
   PRIMARY KEY (productname, ciid),
-  FOREIGN KEY (productname) REFERENCES Products (productname), 
-  FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
+  CONSTRAINT fk_becomes_productname FOREIGN KEY (productname) REFERENCES Products (productname), 
+  CONSTRAINT fk_becomes_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
-/* Shopping_Cart (Made_of) Cart_Item */
+--Shopping_Cart (Made_of) Cart_Item
 CREATE TABLE Made_of (
-  cid INTEGER,
+  sid INTEGER,
   ciid INTEGER,
-  PRIMARY KEY (cid, ciid),
-  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid), 
-  FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
+  PRIMARY KEY (sid, ciid),
+  CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
+  CONSTRAINT fk_made_of_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
-/* Payment (Paid_for) Shopping_Cart */
+--Payment (Paid_for) Shopping_Cart
 CREATE TABLE Paid_for (
-  cid INTEGER,
+  sid INTEGER,
   pid INTEGER,
-  PRIMARY KEY (cid, pid),
-  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid), 
-  FOREIGN KEY (pid) REFERENCES Payment (pid)
+  PRIMARY KEY (sid, pid),
+  CONSTRAINT fk_paid_for_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
+  CONSTRAINT fk_paid_for_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
-/* Order_History Has (Payment (Paid_for) Shopping_Cart) */
+--Order_History Has (Payment (Paid_for) Shopping_Cart)
 CREATE TABLE Has (
   oid INTEGER,
   pid INTEGER,
-  cid INTEGER,
-  PRIMARY KEY (oid, pid, cid),
-  FOREIGN KEY (oid) REFERENCES Order_History (oid), 
-  FOREIGN KEY (pid) REFERENCES Payment (pid),
-  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid)
+  sid INTEGER,
+  PRIMARY KEY (oid, pid, sid),
+  CONSTRAINT fk_has_oid FOREIGN KEY (oid) REFERENCES Order_History (oid), 
+  CONSTRAINT fk_has_pid FOREIGN KEY (pid) REFERENCES Payment (pid),
+  CONSTRAINT fk_has_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid)
 );
-
 -- need to add more relations 
 
 ------------------------------------------------------------------------------
+INSERT INTO User_Details (username, password, first_name, last_name, email, birthdate, points) VALUES 
+("Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "1998-01-01", 200),
+("Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "1998-02-01", 0),
+("Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "1998-03-01", 100);
+--("Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "1998-05-01", 300),
+--("Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "1998-07-01", 200);
 
+/*
 INSERT INTO User_Details (username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, birthdate, credit_card_number, date_joined, points) VALUES 
 ("user_0", "Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "seoul", "123-456", "010-1111-1111", "1998-01-01", "12345678", "2020-01-01", 200),
 ("user_1", "Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "pusan", "789-012", "010-2222-2222", "1998-02-01", "90123456", "2020-02-01", 0),
@@ -176,32 +182,39 @@ INSERT INTO User_Details (username, password, first_name, last_name, email, deli
 ("user_3", "Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "daegu", "901-234", "010-5555-5555", "1998-05-01", "56789012", "2020-04-01", 300),
 ("user_4", "Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "daejun", "567-890", "010-7777-7777", "1998-07-01", "34567890", "2020-05-01", 200);
 
-INSERT INTO Category (subcategory, category) VALUES 
-("Water", "Water & Beverages"), 
-("Soda", "Water & Beverages"),
-("Coffee", "Water & Beverages"),
-("Tea", "Water & Beverages"),
-("Juice", "Water & Beverages"),
-("Milk", "Water & Beverages"), 
-("Beef", "Meat & Poultry"),
-("Pork", "Meat & Poultry"),
-("Chicken", "Meat & Poultry"),
-("Eggs", "Meat & Poultry"),
-("Fish", "Seafood"), 
-("Shellfish & Snails", "Seafood"),
-("Dried Seafoods", "Seafood"),
-("Chocolate", "Bread & Snacks"),
-("Snacks", "Bread & Snacks"),
-("Bread", "Bread & Snacks"), 
-("Ice Cream", "Bread & Snacks"),
-("Candy", "Bread & Snacks"),
-("Noodles", "Processed Food"),
-("Jams", "Processed Food"),
-("Sauces", "Processed Food"), 
-("Seasonings & Spices", "Processed Food"),
-("Oils", "Processed Food"),
-("Canned Goods", "Processed Food"),
-("Instant Noodles", "Processed Food");
+INSERT INTO Parent_Category (parent_cid, name, number_of_children) VALUES 
+("parct_0", "Water & Beverages", 6), 
+("parct_1", "Meat & Poultry", 4),
+("parct_2", "Seafood", 3),
+("parct_3", "Confectionery & Snacks", 5),
+("parct_4", "Processed Food", 7);
+
+INSERT INTO Category (cid, name, parent_cid) VALUES 
+("cid_0", "Water", "parct_0"), 
+("cid_1", "Soda", "parct_0"),
+("cid_2", "Coffee", "parct_0"),
+("cid_3", "Tea", "parct_0"),
+("cid_4", "Juice", "parct_0"),
+("cid_5", "Milk", "parct_0"), 
+("cid_6", "Beef", "parct_1"),
+("cid_7", "Pork", "parct_1"),
+("cid_8", "Chicken", "parct_1"),
+("cid_9", "Eggs", "parct_1"),
+("cid_10", "Fish", "parct_2"), 
+("cid_11", "Shellfish & Snails", "parct_2"),
+("cid_12", "Dried Seafoods", "parct_2"),
+("cid_13", "Chocolate", "parct_3"),
+("cid_14", "Snacks", "parct_3"),
+("cid_15", "Bread", "parct_3"), 
+("cid_16", "Ice Cream", "parct_3"),
+("cid_17", "Candy", "parct_3"),
+("cid_18", "Noodles", "parct_4"),
+("cid_19", "Jams", "parct_4"),
+("cid_20", "Sauces", "parct_4"), 
+("cid_21", "Seasonings & Spices", "parct_4"),
+("cid_22", "Oils", "parct_4"),
+("cid_23", "Canned Goods", "parct_4"),
+("cid_24", "Instant Noodles", "parct_4");
 
 INSERT INTO Products (prodid, cid, name, description, expiration_date, cost) VALUES 
 ("prod_0", "cid_0", "Kirkland Signature Bottled Water", "Kirkland Signature Bottled Water", "2020-07-01", 1000), 
@@ -254,19 +267,4 @@ INSERT INTO Products (prodid, cid, name, description, expiration_date, cost) VAL
 ("prod_47", "cid_9", "Quail", "Quail", "2020-07-28", 2400),
 ("prod_48", "cid_10", "Mackerel", "Mackerel", "2020-07-29", 2500),
 ("prod_49", "cid_10", "Tuna", "Tuna", "2020-07-30", 2600);
-
-/*
-INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
-(oid_0, ), 
-(oid_1, ),
-(oid_2, ),
-(oid_3, ),
-(oid_4, );
-
-INSERT INTO Payment (pid, payment_method, payment_date) VALUES 
-(pid_0, ), 
-(pid_1, ),
-(pid_2, ),
-(pid_3, ),
-(pid_4, );
 */
