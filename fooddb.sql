@@ -289,7 +289,47 @@ omega-3 fatty acids.", 15000),
 ("Laver", "!", "An edible seaweed with thin flat fronds of a reddish-purple and green colour
  that becomes black when dry.", 3000),
 ("Dried Squid", "!", "Dried shredded squid is a dried, shredded, seasoned, seafood product, made
- from squid, commonly found in coastal Asian countries, Russia, and Hawaii.", 15000);
+ from squid, commonly found in coastal Asian countries, Russia, and Hawaii.", 15000),
+("Udon Noodles", "!", "Udon is a type of thick, wheat-flour noodle used frequently in Japanese
+ cuisine. It is often served hot as a noodle soup in its simplest form, as kake udon, in a mildly
+  flavoured broth called kakejiru, which is made of dashi, soy sauce, and mirin. It is usually
+   topped with thinly chopped scallions.", 300),
+("Soba Noodles", "!", "Soba is the Japanese name for buckwheat. It usually refers to thin noodles
+ made from buckwheat flour, or a combination of buckwheat and wheat flours.", 10000),
+("Blackberry Jam", "!", "Perfect to serve on toast or with an ice cream. Blackberries make 
+scrumptious jam.", 11000),
+("Apricot Jam", "!", "A sweet preserve made from apricots.", 14000),
+("Cumin", "!", "The aromatic seeds of a plant of the parsley family, used as a spice, especially
+ ground and used in curry powder.", 3000),
+("Cinnamon", "!", "An aromatic spice made from the peeled, dried, and rolled bark of a Southeast
+ Asian tree.", 2800),
+("Avocado Oil", "!", "Avocado oil is an edible oil pressed from the fruit of the Persea americana 
+(avocado). As a food oil, it is used as an ingredient in other dishes, and as a cooking oil.", 12000),
+("Almond Oil", "!", "Almond oil may promote heart health, stabilize blood sugar levels, prevent free
+ radical damage and help you maintain a healthy weight. What's more, the oil makes an excellent 
+ moisturizer for both the skin and hair, and it may even help prevent stretch marks and protect 
+ your skin from sun damage.", 14500),
+("Popcorn",  "!", "Popcorn is a variety of corn kernel which expands and puffs up when heated;
+ the same names are also used to refer to the foodstuff produced by the expansion.", 3000),
+("Pretzel", "!", "DescriptionA pretzel, from dialectal German pronunciation, standard German:
+ Breze is a type of baked pastry made from dough that is commonly shaped into a knot. ", 3500),
+("Baguette", "!", "A baguette is a long, thin loaf of French bread that is commonly made from
+ basic lean dough. It is distinguishable by its length and crisp crust.", 4000),
+("White Bread", "!", "White bread typically refers to breads made from wheat flour from which
+ the bran and the germ layers have been removed from the whole wheatberry as part of the flour
+  grinding or milling process, producing a light-colored flour.", 4000),
+("Melona", "!", "Melona is a South Korean flavored ice pop, manufactured by the Binggrae Co. Ltd.
+ Although the product is called Melona and is identified by its melon flavor, the ice pop also
+  comes in other fruit flavors.", 800),
+("World Cone", "!", "An ice cream product made by Lotte Confectionery, is one of the best-selling
+ Korean ice cream products of all time.", 1200),
+("Skittles", "!", "Skittles is a brand of fruit-flavored candy, currently produced and marketed by
+ the Wrigley Company, a division of Mars, Inc. Skittles consist of hard sugar shells imprinted with
+  the letter S.", 1500),
+("Starburst", "!", "Starburst is the brand name of a box-shaped, fruit-flavored soft taffy candy
+ manufactured by The Wrigley Company, a subsidiary of Mars, Incorporated. Starburst has many different
+  varieties, such as Tropical, Sour, FaveREDs, Very Berry, Superfruit Flavor, Summer Blast, 
+  and Original.", 2000);
 
 
 /* payment moethod: bank transfer, cash, credit card, mobile payment*/
