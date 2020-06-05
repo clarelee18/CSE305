@@ -56,13 +56,13 @@ CREATE TABLE Products (
 CREATE TABLE Payment (
   pid INTEGER NOT NULL,
   payment_method VARCHAR(128) NOT NULL,
+  payment_date DATE NOT NULL,
   payment_time TIME NOT NULL,
   PRIMARY KEY (pid)
 );
 
 CREATE TABLE Order_History (
   oid INTEGER NOT NULL,
-  order_time TIME NOT NULL,
   shipping_date DATE NOT NULL,
   total_price INTEGER NOT NULL,
   total_quantity INTEGER NOT NULL,
@@ -254,6 +254,20 @@ INSERT INTO Products (prodid, cid, name, description, expiration_date, cost) VAL
 ("prod_47", "cid_9", "Quail", "Quail", "2020-07-28", 2400),
 ("prod_48", "cid_10", "Mackerel", "Mackerel", "2020-07-29", 2500),
 ("prod_49", "cid_10", "Tuna", "Tuna", "2020-07-30", 2600);
+
+/* payment moethod: bank transfer, cash, credit card, mobile payment*/
+/* date: YYYY-MM-DD time: hh:mm:ss*/
+INSERT INTO Payment (pid, payment_method, payment_date, payment_time) VALUES 
+(1, "cash", "2019-06-06", "08:02:25"),
+(2, "mobile payment", "2020-02-06", "13:06:29"),
+(3, "credit card", "2020-04-14", "23:07:16"),
+(4, "bank transfer", "2019-09-09", "11:59:36"),
+(5, "credit card", "2019-11-22", "15:55:42"),
+(6, "mobile payment", "2020-04-23", "15:40:45"),
+(7, "cash", "2020-06-01", "17:17:01"),
+(8, "bank transfer", "2019-01-15", "09:42:45"),
+(8, "bank transfer", "2020-05-09", "10:35:09");
+
 
 /*
 INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
