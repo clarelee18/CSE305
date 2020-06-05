@@ -27,7 +27,7 @@ CREATE TABLE User_Ordering (
   username VARCHAR(128),
   delivery_addr VARCHAR(512) NOT NULL,
   contact_number VARCHAR(128) NOT NULL,
-  PRIMARY KEY (username),
+  PRIMARY KEY (username, delivery_addr, contact_number),
   CONSTRAINT fk_user_ordering_username FOREIGN KEY (username) REFERENCES User_Details (username)
 );
 
@@ -55,7 +55,6 @@ CREATE TABLE Products (
 CREATE TABLE Payment (
   pid INTEGER NOT NULL,
   payment_method VARCHAR(128) NOT NULL,
-  payment_date DATE NOT NULL,
   payment_time TIME NOT NULL,
   payment_date DATE NOT NULL,
   PRIMARY KEY (pid)
