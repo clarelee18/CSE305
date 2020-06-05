@@ -90,64 +90,82 @@ CREATE TABLE Cartitem (
   PRIMARY KEY (ciid)
 );
 
+/*tables that relate entities*/
+/*  all the keys: 
+    username VARCHAR(128)
+    productname VARCHAR(128)
+    subcategory VARCHAR(128)
+    cid INTEGER 
+    ciid INTEGER 
+    pid INTEGER 
+    oid INTEGER 
+*/
+
+/* User_Details (Manages) (Product (becomes) Cart_Item) */
 CREATE TABLE Manages (
-  uid VARCHAR(128),
-  prodid VARCHAR(128),
-  ciid VARCHAR(128),
+  username VARCHAR(128),
+  productname VARCHAR(128),
+  ciid INTEGER,
   PRIMARY KEY (uid, prodid, ciid),
-  CONSTRAINT fk_manages_uid FOREIGN KEY (uid) REFERENCES Users (uid),
-  CONSTRAINT fk_manages_prodid FOREIGN KEY (prodid) REFERENCES Products (prodid),
-  CONSTRAINT fk_manages_ciid FOREIGN KEY (ciid) REFERENCES Cartitem (ciid)
+  FOREIGN KEY (uid) REFERENCES Users_Details (uid), 
+  FOREIGN KEY (productname) REFERENCES Products(productname),
+  FOREIGN KEY (ciid) REFERENCES Cart                                          item (ciid)
 );
 
+/* User_Details (Makes) Payment*/
 CREATE TABLE Makes (
-  uid VARCHAR(128),
-  pid VARCHAR(128),
-  PRIMARY KEY (uid, pid),
-  CONSTRAINT fk_makes_uid FOREIGN KEY (uid) REFERENCES Users (uid), -- delete ??
-  CONSTRAINT fk_makes_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
+  username VARCHAR(128),
+  pid INTEGER,
+  PRIMARY KEY (username, pid),
+  FOREIGN KEY (username) REFERENCES Users_Details (username), 
+  FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
+/* Product (Belongs_to) Category */
 CREATE TABLE Belongs_to (
-  cid VARCHAR(128),
-  prodid VARCHAR(128),
-  PRIMARY KEY (cid, prodid),
-  CONSTRAINT fk_belongsto_cid FOREIGN KEY (cid) REFERENCES Category (cid), -- delete ??
-  CONSTRAINT fk_belongsto_prodid FOREIGN KEY (prodid) REFERENCES Products (prodid)
+  productname VARCHAR(128),
+  subcategory VARCHAR(128),
+  PRIMARY KEY (productname, subcategory),
+  FOREIGN KEY (subcategory) REFERENCES Category (subcategory), 
+  FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
+/* Product (Becomes) Cart_Item */
 CREATE TABLE Becomes (
-  prodid VARCHAR(128),
-  ciid VARCHAR(128),
-  PRIMARY KEY (prodid, ciid),
-  CONSTRAINT fk_becomes_prodid FOREIGN KEY (prodid) REFERENCES Products (prodid), -- delete ??
-  CONSTRAINT fk_becomes_ciid FOREIGN KEY (ciid) REFERENCES Cartitem (ciid)
+  productname VARCHAR(128),
+  ciid INTEGER,
+  PRIMARY KEY (productname, ciid),
+  FOREIGN KEY (productname) REFERENCES Products (productname), 
+  FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
+/* Shopping_Cart (Made_of) Cart_Item */
 CREATE TABLE Made_of (
-  sid VARCHAR(128),
-  ciid VARCHAR(128),
-  PRIMARY KEY (sid, ciid),
-  CONSTRAINT fk_madeof_sid FOREIGN KEY (sid) REFERENCES Shopping_cart (sid), -- delete ??
-  CONSTRAINT fk_madeof_ciid FOREIGN KEY (ciid) REFERENCES Cartitem (ciid)
+  cid INTEGER,
+  ciid INTEGER,
+  PRIMARY KEY (cid, ciid),
+  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid), 
+  FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
-CREATE TABLE Pay_for (
-  sid VARCHAR(128),
-  pid VARCHAR(128),
-  PRIMARY KEY (sid, pid),
-  CONSTRAINT fk_for_sid FOREIGN KEY (sid) REFERENCES Shopping_cart (sid), -- delete ??
-  CONSTRAINT fk_for_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
+/* Payment (Paid_for) Shopping_Cart */
+CREATE TABLE Paid_for (
+  cid INTEGER,
+  pid INTEGER,
+  PRIMARY KEY (cid, pid),
+  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid), 
+  FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
+/* Order_History Has (Payment (Paid_for) Shopping_Cart) */
 CREATE TABLE Has (
-  oid VARCHAR(128),
-  pid VARCHAR(128),
-  sid VARCHAR(128),
-  PRIMARY KEY (oid, pid, sid),
-  CONSTRAINT fk_has_oid FOREIGN KEY (oid) REFERENCES Order_History (oid), -- delete ??
-  CONSTRAINT fk_has_pid FOREIGN KEY (pid) REFERENCES Payment (pid),
-  CONSTRAINT fk_has_sid FOREIGN KEY (sid) REFERENCES Shopping_cart (sid)
+  oid INTEGER,
+  pid INTEGER,
+  cid INTEGER,
+  PRIMARY KEY (oid, pid, cid),
+  FOREIGN KEY (oid) REFERENCES Order_History (oid), 
+  FOREIGN KEY (pid) REFERENCES Payment (pid),
+  FOREIGN KEY (cid) REFERENCES Shopping_Cart (cid)
 );
 
 -- need to add more relations 
