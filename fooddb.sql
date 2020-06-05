@@ -27,7 +27,6 @@ CREATE TABLE User_Ordering (
   username VARCHAR(128),
   delivery_addr VARCHAR(512) NOT NULL,
   contact_number VARCHAR(128) NOT NULL,
-  credit_card_number VARCHAR(128),
   PRIMARY KEY (username),
   CONSTRAINT fk_user_ordering_username FOREIGN KEY (username) REFERENCES User_Details (username)
 );
@@ -58,6 +57,7 @@ CREATE TABLE Payment (
   payment_method VARCHAR(128) NOT NULL,
   payment_date DATE NOT NULL,
   payment_time TIME NOT NULL,
+  payment_date DATE NOT NULL,
   PRIMARY KEY (pid)
 );
 
@@ -168,26 +168,29 @@ CREATE TABLE Has (
 
 ------------------------------------------------------------------------------
 INSERT INTO User_Details (username, password, first_name, last_name, email, birthdate, points) VALUES 
-("Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "1998-01-01", 200),
-("Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "1998-02-01", 0),
-("Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "1998-03-01", 100),
-("Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "1998-05-01", 300),
-("Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "1998-07-01", 200);
+("kelly00", "0002", "Kelly", "Peng", "01@gmail.com", "2000-04-14", 10),
+("mark99", "0002", "Mark", "Lee", "02@hotmail.com", "1999-08-02", 12),
+("jean97", "abcd", "Jean", "Kim", "jeann@gmail.com", "1997-11-24", 240),
+("kid", "a73j", "Sam", "Lee", "kidsam@gmail.com", "2003-12-30", 56),
+("sev", "a5y^", "Steven", "Peng", "01@gmail.com", "2000-04-01", 80);
 
-/*
-INSERT INTO User_Details (username, password, first_name, last_name, email, delivery_addr, postal_code, phone_number, birthdate, credit_card_number, date_joined, points) VALUES 
-("user_0", "Monty", "abcde1!", "Lamont", "Wood", "abcde@gmail.com", "seoul", "123-456", "010-1111-1111", "1998-01-01", "12345678", "2020-01-01", 200),
-("user_1", "Rick", "fghij2!", "Kendrick", "Sandoval", "fghij@gmail.com", "pusan", "789-012", "010-2222-2222", "1998-02-01", "90123456", "2020-02-01", 0),
-("user_2", "Jackie", "klmno3!", "John", "Carr", "klmno@gmail.com", "incheon", "345-678", "010-3333-3333", "1998-03-01", "78901234", "2020-03-01", 100),
-("user_3", "Howie", "qrstu4!", "Howard", "Russell", "qrstu@gmail.com", "daegu", "901-234", "010-5555-5555", "1998-05-01", "56789012", "2020-04-01", 300),
-("user_4", "Ted", "vwxyz5!", "Edward", "Cohen", "vwxyz@gmail.com", "daejun", "567-890", "010-7777-7777", "1998-07-01", "34567890", "2020-05-01", 200);
+INSERT INTO User_Ordering (username, delivery_addr, contact_number) VALUES
+("kelly00", "incheon", "01058495838"),
+("mark99", "seoul", "01048573837"),
+("mark99", "incheon", "01048573837"),
+("kid", "busan", "01056462734"),
+("kelly00", "incheon", "01058495838"),
+("sev", "daegu", "01042322936"),
+("kid", "daejeon", "01023163789"),
+("jean97", "ulsan", "01012345678");
 
-INSERT INTO Parent_Category (parent_cid, name, number_of_children) VALUES 
-("parct_0", "Water & Beverages", 6), 
-("parct_1", "Meat & Poultry", 4),
-("parct_2", "Seafood", 3),
-("parct_3", "Confectionery & Snacks", 5),
-("parct_4", "Processed Food", 7);
+INSERT INTO User_Address (delivery_addr, postal_code) VALUES
+("incheon", 434),
+("seoul", 343),
+("busan", 142),
+("daegu", 856),
+("daejeon", 457),
+("ulsan", 856);
 
 INSERT INTO Category (cid, name, parent_cid) VALUES 
 ("cid_0", "Water", "parct_0"), 
@@ -215,6 +218,46 @@ INSERT INTO Category (cid, name, parent_cid) VALUES
 ("cid_22", "Oils", "parct_4"),
 ("cid_23", "Canned Goods", "parct_4"),
 ("cid_24", "Instant Noodles", "parct_4");
+
+---------------------ADD IMAGES-----------------------------------------------
+INSERT INTO Products (prodid, image, description, cost) VALUES 
+("Fiji", "!", "The unique mineral profile, which contributes to FIJI Water's signature soft, 
+smooth taste, reflects The Nature of Water sourced from an artesian aquifer and untouched 
+until you unscrew the cap.", 2000), 
+("Samdasoo", "!", "Following upon the eruption of Jeju Island's Halla Mountain volcano 25,000 years 
+ago, a now famed water was born. Mineral-rich and beneficial Jeju Samdasoo water, a little 
+treasure of the ecosystem, has spread from Halla Mountain to the world.",1200),
+("Sprite", "!", "A delectable lemon-lime beverage best served cold and fizzy, and possibly 
+with lemonade or alcohol, or both. It has possibly the shortest half-life of any soda, as it
+ goes flat within minutes. ", 1800),
+("Pepsi", "!", "Pepsi is a carbonated soft drink manufactured by PepsiCo. Originally created and 
+developed in 1893 by Caleb Bradham and introduced as Brad's Drink, it was renamed as Pepsi-Cola 
+in 1898, and then shortened to Pepsi in 1961.", 1500),
+("Latte", "!", "Café latte is espresso served with plenty of steamed milk, which makes it smooth, 
+light brown, and not bitter or harsh.", 2900),
+("Americano", "!", "The term 'Americano' means 'American', and it derives from American Spanish, 
+dating to the 1970s, or from Italy. The term 'caffè Americano' specifically is Italian for 
+'American coffee'.", 2200),
+("Peppermint Tea", "!", "Peppermint tea is a popular herbal tea that is naturally calorie- and 
+caffeine-free. Some research has suggested that the oils in peppermint may have a number of other 
+health benefits, such as fresher breath, better digestion, and reduced pain from headaches. 
+Peppermint tea also has antibacterial properties.", 1400),
+();
+
+/*
+INSERT INTO Order_History (oid, prodid, pid, order_date, date_shipped, total_price, quantity, delivery_charge) VALUES 
+(oid_0, ), 
+(oid_1, ),
+(oid_2, ),
+(oid_3, ),
+(oid_4, );
+
+INSERT INTO Payment (pid, payment_method, payment_date) VALUES 
+(pid_0, ), 
+(pid_1, ),
+(pid_2, ),
+(pid_3, ),
+(pid_4, );
 
 INSERT INTO Products (prodid, cid, name, description, expiration_date, cost) VALUES 
 ("prod_0", "cid_0", "Kirkland Signature Bottled Water", "Kirkland Signature Bottled Water", "2020-07-01", 1000), 
