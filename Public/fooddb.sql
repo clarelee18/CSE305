@@ -242,7 +242,7 @@ health benefits, such as fresher breath, better digestion, and reduced pain from
 Peppermint tea also has antibacterial properties.", 1400),
 ("Rooibos Tea", "Rooibos Tea.jpg", "Smoky, sweet, woody, grassy, vanilla, floral, geranium, honey, herbal and 
 caramel are just a handful of the words that can describe the flavor spectrum of sipping a rooibos 
-tea. Because it��s an herb, rooibos is completely caffeine free. So it��s a popular alternative to 
+tea. Because it's an herb, rooibos is completely caffeine free. So it's a popular alternative to 
 traditional caffeinated beverages like tea or coffee.", 1900),
 ("Orange Juice", "Orange Juice.jpeg", "Orange juice is a liquid extract of the orange tree fruit, produced by 
 squeezing or reaming oranges. It comes in several different varieties, including blood orange, 
@@ -292,7 +292,7 @@ omega-3 fatty acids.", 15000),
 ("Udon Noodles", "Udon Noodles.jpg", "Udon is a type of thick, wheat-flour noodle used frequently in Japanese
  cuisine. It is often served hot as a noodle soup in its simplest form, as kake udon, in a mildly
   flavoured broth called kakejiru, which is made of dashi, soy sauce, and mirin. It is usually
-   topped with thinly chopped scallions.", 300),
+   topped with thinly chopped scallions.", 3000),
 ("Soba Noodles", "Soba Noodles.jpg", "Soba is the Japanese name for buckwheat. It usually refers to thin noodles
  made from buckwheat flour, or a combination of buckwheat and wheat flours.", 10000),
 ("Blackberry Jam", "Blackberry Jam.jpg", "Perfect to serve on toast or with an ice cream. Blackberries make 
@@ -345,41 +345,42 @@ INSERT INTO Payment (pid, payment_method, payment_date, payment_time) VALUES
 (9, "bank transfer", "2020-05-09", "10:35:09");
 
 
-/*
-INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALUES 
-(1, "2019-06-09", , ),
-(2, "2020-02-10", , ),
-(3, "2020-04-17", , ),
-(4, "2019-09-12", , ),
-(5, "2019-11-23", , ),
-(6, "2020-04-25", , ),
-(7, "2020-06-03", , ),
-(8, "2019-01-17", , ),
-(9, "2020-05-13", , );
-*/
 
-/*
-INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES 
-( , 2000),
-( , 0),
-( , 2000),
-( , 0),
-( , 0),
-( , 2000),
-( , 2000),
-( , 2000),
-( , 0)
+INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALUES 
+(1, "2019-06-09", 49500, 4), -- blackberry, apricot, soba, almond
+(2, "2020-02-10", 40000, 2), -- oyster*2
+(3, "2020-04-17", 5100, 3), -- chichen thigh, chicken egg, banana milk
+(4, "2019-09-12", 43000, 5), -- Salmon*2, sausage*2, beef chunk steak
+(5, "2019-11-23", 41200, 10), -- latte*3, americao*5, almond oil, beef chunck steak 
+(6, "2020-04-25", 9600, 10), -- Melona*6, world cone*4
+(7, "2020-06-03", 13000, 7), -- skittles*2, starbust*2, fiji*3
+(8, "2019-01-17", 30000, 3), -- salmon, scallop, udon noodles
+(9, "2020-05-13", 44500, 7); -- blackberry jam, apricot jam, white bread*2, cinnamon, latte*3
+
+
+INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES -- free over 40000
+(49500, 0),
+(40000, 0),
+(5100, 2000),
+(43000, 0),
+(41200, 0),
+(9600, 2000),
+(13000, 2000),
+(30000, 2000),
+(44500, 0)
 ;
-*/
+
 
 INSERT INTO Shopping_Cart (sid, number_of_items) VALUES 
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 1), 
-(6, 1),
-(7, 1)
+(1, 4),
+(2, 2),
+(3, 3),
+(4, 5),
+(5, 10), 
+(6, 10),
+(7, 7),
+(8, 3),
+(9, 7)
 ;
 
 INSERT INTO Cart_Item (ciid, quantity) VALUES 
@@ -387,16 +388,27 @@ INSERT INTO Cart_Item (ciid, quantity) VALUES
 (2, 1),
 (3, 1),
 (4, 1),
-(5, 1), 
+(5, 2), 
 (6, 1),
 (7, 1),
 (8, 1),
-(9, 1),
-(10, 1),
+(9, 2),
+(10, 2),
 (11, 1),
-(12, 1),
-(13, 1),
+(12, 3),
+(13, 5),
 (14, 1),
-(15, 1),
-(16, 1)
+(15, 6),
+(16, 4),
+(17, 2),
+(18, 2),
+(19, 3),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 2),
+(26, 1),
+(27, 2),
 ;
