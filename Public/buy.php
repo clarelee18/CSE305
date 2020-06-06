@@ -21,7 +21,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <br><a href="logout.php" class="btn btn-danger">Logout</a>
   </p>
   
-  <h2>Cart</h2>
+  <h2>Buy</h2>
   
   <?php
    // --Water & Beverages--
