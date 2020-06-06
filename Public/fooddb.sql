@@ -410,5 +410,5 @@ INSERT INTO Cart_Item (ciid, quantity) VALUES
 (24, 1),
 (25, 2),
 (26, 1),
-(27, 2),
+(27, 2)
 ;
