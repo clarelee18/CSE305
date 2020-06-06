@@ -231,101 +231,101 @@ with lemonade or alcohol, or both. It has possibly the shortest half-life of any
 ("Pepsi", "Pepsi.jpeg", "Pepsi is a carbonated soft drink manufactured by PepsiCo. Originally created and 
 developed in 1893 by Caleb Bradham and introduced as Brad's Drink, it was renamed as Pepsi-Cola 
 in 1898, and then shortened to Pepsi in 1961.", 1500),
-("Latte", "!", "Cafe latte is espresso served with plenty of steamed milk, which makes it smooth, 
+("Latte", "Latte.jpg", "Cafe latte is espresso served with plenty of steamed milk, which makes it smooth, 
 light brown, and not bitter or harsh.", 2900),
-("Americano", "!", "The term 'Americano' means 'American', and it derives from American Spanish, 
+("Americano", "Americano.jpg", "The term 'Americano' means 'American', and it derives from American Spanish, 
 dating to the 1970s, or from Italy. The term 'caffe Americano' specifically is Italian for 
 'American coffee'.", 2200),
-("Peppermint Tea", "!", "Peppermint tea is a popular herbal tea that is naturally calorie- and 
+("Peppermint Tea", "Peppermint Tea.jpg", "Peppermint tea is a popular herbal tea that is naturally calorie- and 
 caffeine-free. Some research has suggested that the oils in peppermint may have a number of other 
 health benefits, such as fresher breath, better digestion, and reduced pain from headaches. 
 Peppermint tea also has antibacterial properties.", 1400),
-("Rooibos Tea", "!", "Smoky, sweet, woody, grassy, vanilla, floral, geranium, honey, herbal and 
+("Rooibos Tea", "Rooibos Tea.jpg", "Smoky, sweet, woody, grassy, vanilla, floral, geranium, honey, herbal and 
 caramel are just a handful of the words that can describe the flavor spectrum of sipping a rooibos 
 tea. Because it��s an herb, rooibos is completely caffeine free. So it��s a popular alternative to 
 traditional caffeinated beverages like tea or coffee.", 1900),
-("Orange Juice", "!", "Orange juice is a liquid extract of the orange tree fruit, produced by 
+("Orange Juice", "Orange Juice.jpeg", "Orange juice is a liquid extract of the orange tree fruit, produced by 
 squeezing or reaming oranges. It comes in several different varieties, including blood orange, 
 navel oranges, valencia orange, clementine, and tangerine. ", 3000),
-("Apple Juice", "!", "Apple juice can be useful for rehydrating when you're sick. Its disease-fighting 
+("Apple Juice", "Apple Juice.jpg", "Apple juice can be useful for rehydrating when you're sick. Its disease-fighting 
 plant compounds may also protect your heart and brain as you age. However, apple juice is not very 
 filling compared to whole apples, nor does it offer much fiber, vitamins, or minerals.", 2900),
-("Strawberry Milk", "!", "Strawberry Milk is simply milk, mixed with either natural or artificial 
+("Strawberry Milk", "Strawberry Milk.jpg", "Strawberry Milk is simply milk, mixed with either natural or artificial 
 strawberry fruit flavoring.", 3000),
-("Banana Milk", "!", "High in potassium, vitamin B6 and pectin, banana milk is nutritious and full of 
+("Banana Milk", "Banana Milk.jpg", "High in potassium, vitamin B6 and pectin, banana milk is nutritious and full of 
 filling fiber. It has a light, sweet flavor.", 3000),
-("Beef Chuck Steak", "!", "Chuck steak is a cut of beef and is part of the sub-prime cut known as the chuck. 
+("Beef Chuck Steak", "Beef Chuck Steak.jpeg", "Chuck steak is a cut of beef and is part of the sub-prime cut known as the chuck. 
 The typical chuck steak is a rectangular cut, about 2.54cm thick and containing parts of the shoulder 
 bones, and is often known as a '7-bone steak,' as the shape of the shoulder bone in cross section 
 resembles the numeral '7'.", 7000),
-("Beef Short Ribs", "!", "Short ribs are tender and have a lot more flavor than some other cuts. It has the 
+("Beef Short Ribs", "Beef Short Ribs.png", "Short ribs are tender and have a lot more flavor than some other cuts. It has the 
 bone in it, so when you serve it, it has a nice look to it.", 5300),
-("Bacon", "!", "Bacon is a type of salt-cured pork. Bacon is prepared from several different cuts of meat, 
+("Bacon", "Bacon.jpg", "Bacon is a type of salt-cured pork. Bacon is prepared from several different cuts of meat, 
 typically from the pork belly or from back cuts, which have less fat than the belly. ", 5500),
-("Sausage", "!", "Sausages are a meat product usually made from ground meat, often pork, beef, or poultry, 
+("Sausage", "Sausage.png", "Sausages are a meat product usually made from ground meat, often pork, beef, or poultry, 
 along with salt, spices and other flavourings. ", 3000),
-("Chicken Breast", "!", "Chicken breast is a great source of lean protein (protein without a lot of 
+("Chicken Breast", "Chicken Breast.jpg", "Chicken breast is a great source of lean protein (protein without a lot of 
 accompanying fat). People who eat enough protein are more likely to maintain muscle mass and preserve
  a healthy metabolism.", 3200),
-("Chicken Thigh", "!", "Chicken thighs are the top part of the chicken leg where it connects to
+("Chicken Thigh", "Chicken Thigh.jpg", "Chicken thighs are the top part of the chicken leg where it connects to
  the body (as opposed to the drumstick, which is the bottom half). Because they are dark meat, chicken
   thighs cook up moist and tender.", 1800),
-("Duck Egg", "!", "A duck egg��s white tends to be nearly transparent, lacking the slight yellowish tint
+("Duck Egg", "Duck Egg.jpg", "A duck egg��s white tends to be nearly transparent, lacking the slight yellowish tint
  some chicken eggs have. Its yolk, though, is what��s so prized by chefs: a duck yolk is much bigger than
   a chicken yolk.", 1000),
-("Chicken Egg", "!", "In the chicken egg, there is a balance of numerous, high quality nutrients, many
+("Chicken Egg", "Chicken Egg.jpg", "In the chicken egg, there is a balance of numerous, high quality nutrients, many
  of which are highly bioavailable. The egg confers a multitude of health benefits to consumers emphasizing
   its classification as a functional food.", 300),
-("Tuna", "!", "A tuna is a saltwater fish that belongs to the tribe Thunnini, a subgrouping of the 
+("Tuna", "Tuna.jpg", "A tuna is a saltwater fish that belongs to the tribe Thunnini, a subgrouping of the 
 Scombridae family. The Thunnini comprise 15 species across five genera, the sizes of which vary greatly, 
 ranging from the bullet tuna up to the Atlantic bluefin tuna. ", 40000),
-("Salmon", "!", "Salmon is a common food classified as an oily fish with a rich content of protein and 
+("Salmon", "Salmon.jpg", "Salmon is a common food classified as an oily fish with a rich content of protein and 
 omega-3 fatty acids.", 15000),
-("Scallop", "!", "An edible bivalve mollusk with a ribbed fan-shaped shell. Scallops swim by rapidly
+("Scallop", "Scallop.jpeg", "An edible bivalve mollusk with a ribbed fan-shaped shell. Scallops swim by rapidly
  opening and closing the shell valves.", 12000),
-("Oyster", "!", "A bivalve mollusk with an irregular long shell that is normally attached to rocks
+("Oyster", "Oyster.jpg", "A bivalve mollusk with an irregular long shell that is normally attached to rocks
  and that is consumed as food.", 20000),
-("Laver", "!", "An edible seaweed with thin flat fronds of a reddish-purple and green colour
+("Laver", "Laver.jpg", "An edible seaweed with thin flat fronds of a reddish-purple and green colour
  that becomes black when dry.", 3000),
-("Dried Squid", "!", "Dried shredded squid is a dried, shredded, seasoned, seafood product, made
+("Dried Squid", "Dried Squid.jpg", "Dried shredded squid is a dried, shredded, seasoned, seafood product, made
  from squid, commonly found in coastal Asian countries, Russia, and Hawaii.", 15000),
-("Udon Noodles", "!", "Udon is a type of thick, wheat-flour noodle used frequently in Japanese
+("Udon Noodles", "Udon Noodles.jpg", "Udon is a type of thick, wheat-flour noodle used frequently in Japanese
  cuisine. It is often served hot as a noodle soup in its simplest form, as kake udon, in a mildly
   flavoured broth called kakejiru, which is made of dashi, soy sauce, and mirin. It is usually
    topped with thinly chopped scallions.", 300),
-("Soba Noodles", "!", "Soba is the Japanese name for buckwheat. It usually refers to thin noodles
+("Soba Noodles", "Soba Noodles.jpg", "Soba is the Japanese name for buckwheat. It usually refers to thin noodles
  made from buckwheat flour, or a combination of buckwheat and wheat flours.", 10000),
-("Blackberry Jam", "!", "Perfect to serve on toast or with an ice cream. Blackberries make 
+("Blackberry Jam", "Blackberry Jam.jpg", "Perfect to serve on toast or with an ice cream. Blackberries make 
 scrumptious jam.", 11000),
-("Apricot Jam", "!", "A sweet preserve made from apricots.", 14000),
-("Cumin", "!", "The aromatic seeds of a plant of the parsley family, used as a spice, especially
+("Apricot Jam", "Apricot Jam.jpg", "A sweet preserve made from apricots.", 14000),
+("Cumin", "Cumin.jpg", "The aromatic seeds of a plant of the parsley family, used as a spice, especially
  ground and used in curry powder.", 3000),
-("Cinnamon", "!", "An aromatic spice made from the peeled, dried, and rolled bark of a Southeast
+("Cinnamon", "Cinnamon.jpg", "An aromatic spice made from the peeled, dried, and rolled bark of a Southeast
  Asian tree.", 2800),
-("Avocado Oil", "!", "Avocado oil is an edible oil pressed from the fruit of the Persea americana 
+("Avocado Oil", "Avocado Oil.jpg", "Avocado oil is an edible oil pressed from the fruit of the Persea americana 
 (avocado). As a food oil, it is used as an ingredient in other dishes, and as a cooking oil.", 12000),
-("Almond Oil", "!", "Almond oil may promote heart health, stabilize blood sugar levels, prevent free
+("Almond Oil", "Almond Oil.jpg", "Almond oil may promote heart health, stabilize blood sugar levels, prevent free
  radical damage and help you maintain a healthy weight. What's more, the oil makes an excellent 
  moisturizer for both the skin and hair, and it may even help prevent stretch marks and protect 
  your skin from sun damage.", 14500),
-("Popcorn",  "!", "Popcorn is a variety of corn kernel which expands and puffs up when heated;
+("Popcorn",  "Popcorn.jpg", "Popcorn is a variety of corn kernel which expands and puffs up when heated;
  the same names are also used to refer to the foodstuff produced by the expansion.", 3000),
-("Pretzel", "!", "DescriptionA pretzel, from dialectal German pronunciation, standard German:
+("Pretzel", "Pretzel.jpg", "DescriptionA pretzel, from dialectal German pronunciation, standard German:
  Breze is a type of baked pastry made from dough that is commonly shaped into a knot. ", 3500),
-("Baguette", "!", "A baguette is a long, thin loaf of French bread that is commonly made from
+("Baguette", "Baguette.jpg", "A baguette is a long, thin loaf of French bread that is commonly made from
  basic lean dough. It is distinguishable by its length and crisp crust.", 4000),
-("White Bread", "!", "White bread typically refers to breads made from wheat flour from which
+("White Bread", "White Bread.jpg", "White bread typically refers to breads made from wheat flour from which
  the bran and the germ layers have been removed from the whole wheatberry as part of the flour
   grinding or milling process, producing a light-colored flour.", 4000),
-("Melona", "!", "Melona is a South Korean flavored ice pop, manufactured by the Binggrae Co. Ltd.
+("Melona", "Melona.jpg", "Melona is a South Korean flavored ice pop, manufactured by the Binggrae Co. Ltd.
  Although the product is called Melona and is identified by its melon flavor, the ice pop also
   comes in other fruit flavors.", 800),
-("World Cone", "!", "An ice cream product made by Lotte Confectionery, is one of the best-selling
+("World Cone", "World Cone.jpg", "An ice cream product made by Lotte Confectionery, is one of the best-selling
  Korean ice cream products of all time.", 1200),
-("Skittles", "!", "Skittles is a brand of fruit-flavored candy, currently produced and marketed by
+("Skittles", "Skittles.jpg", "Skittles is a brand of fruit-flavored candy, currently produced and marketed by
  the Wrigley Company, a division of Mars, Inc. Skittles consist of hard sugar shells imprinted with
   the letter S.", 1500),
-("Starburst", "!", "Starburst is the brand name of a box-shaped, fruit-flavored soft taffy candy
+("Starburst", "Starburst.jpg", "Starburst is the brand name of a box-shaped, fruit-flavored soft taffy candy
  manufactured by The Wrigley Company, a subsidiary of Mars, Incorporated. Starburst has many different
   varieties, such as Tropical, Sour, FaveREDs, Very Berry, Superfruit Flavor, Summer Blast, 
   and Original.", 2000);
