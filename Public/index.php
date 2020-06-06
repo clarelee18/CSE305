@@ -27,15 +27,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <body>
 <h2>Homepage</h2>
-    <br><a href="water.php"  title="Water & Beverages">Water & Beverages</a>
-    <br><p><img src="pictures/water_beverages.jpg"></p>
-    <br><a href="meat.php"  title="Meat & Poultry">Meat & Poultry</a>
-    <br><p><img src="pictures/meat_poultry.jpg"></p>
-    <br><a href="seafood.php"  title="Seafood">Seafood</a>
-    <br><p><img src="pictures/seafood.jpg"></p>
-    <br><a href="bread.php"  title="Bread & Snacks">Bread & Snacks</a>
-    <br><p><img src="pictures/bread_snacks.jpg"></p>
-    <br><a href="processed.php"  title="Processed Food">Processed Food</a>
-    <br><p><img src="pictures/processed food.jpg"></p>
+  <table style="width:100%">
+  <tr>
+    <td><a href="water.php"  title="Water & Beverages">Water & Beverages</a></td>
+    <td><p><img src="pictures/water_beverages.jpg"></p></td>
+  </tr>
+  <tr>
+    <td><a href="meat.php"  title="Meat & Poultry">Meat & Poultry</a></td>
+    <td><p><img src="pictures/meat_poultry.jpg"></p></td>
+  </tr>
+  <tr>
+    <td><a href="seafood.php"  title="Seafood">Seafood</a></td>
+    <td><p><img src="pictures/seafood.jpg"></p></td>
+  </tr>
+  <tr>
+    <td><a href="bread.php"  title="Bread & Snacks">Bread & Snacks</a></td>
+    <td><p><img src="pictures/bread_snacks.jpg"></p></td>
+  </tr>
+  <tr>
+    <td><a href="processed.php"  title="Processed Food">Processed Food</a></td>
+    <td><p><img src="pictures/processed food.jpg"></p></td>
+  </tr>
+  </table>
 </body>
 </html>
