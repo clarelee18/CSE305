@@ -16,8 +16,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </head>
 <body>
   <p>
-      <a href="index.php">Go to Main</a>
+      <a href="index.php" class="btn btn-primary">Go to Main</a>
       <br><a href="logout.php" class="btn btn-danger">Logout</a>
+      <a href="checkout.php" class="btn btn-primary">checkout</a>
   </p>
   
   <h2>Cart</h2>

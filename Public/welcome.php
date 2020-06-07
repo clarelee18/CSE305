@@ -26,7 +26,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
     <p>
         <a href="index.php"><h2>Go to Main</h2>
-        <a href="viewcart.php" class="btn btn-primary">View Cart</a>
+        <a href="cart.php" class="btn btn-primary">View Cart</a>
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </p>
 </body>
