@@ -119,7 +119,7 @@ CREATE TABLE Belongs_to (
 --Shopping_Cart (Made_of) Products
 CREATE TABLE Made_of (
   sid INTEGER,
-  productname INTEGER,
+  productname VARCHAR(128),
   PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
   CONSTRAINT fk_made_of_productname FOREIGN KEY (productname) REFERENCES Products (productname)
