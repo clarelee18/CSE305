@@ -5,6 +5,8 @@
 
 class ShoppingCart {
     
+    // need to fetch the data, name (and cost?) of the products and make it into an array
+
     // initialize the cart 
     public function __construct() {
         $this->order = Array();
