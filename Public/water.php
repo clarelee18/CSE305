@@ -1,11 +1,20 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
+if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+?>  <p>
+        <a href="logout.php" class="btn btn-danger">Logout</a>
+    </p>
+<?php
+}
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
+?>
+    <p>
+    <a href="login.php" class="btn btn-danger">Login</a>
+    </p>
+<?php
 }
 ?>
 
@@ -19,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
   <p>
         <a href="index.php">Go to Main</a>
-        <br><a href="logout.php" class="btn btn-danger">Logout</a>
+        <br><a href="welcome.php" class="btn btn-danger">MyPage</a>
   </p>
   
   <h2>Water & Beverages</h2> 
@@ -27,9 +36,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <table style="width:100%">
   <tr>
     <td><h3>Water</h3></td>
-    <div class="popup" onclick="popupFunction()">Water
-        <span class="popuptext" id="waterpopup">
-    </div>
     
     <td>Fiji<p><img src="pictures/Fiji.jpg" alt="Fiji" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">

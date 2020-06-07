@@ -79,19 +79,12 @@ CREATE TABLE Shopping_Cart (
   PRIMARY KEY (sid)
 );
 
-CREATE TABLE Cart_Item (
-  ciid INTEGER NOT NULL,
-  quantity INTEGER NOT NULL, -- assertion: should be at least 1
-  PRIMARY KEY (ciid)
-);
-
 --tables that relate entities
 /*  all the keys: 
     username VARCHAR(128)
     productname VARCHAR(128)
     subcategory VARCHAR(128)
     cid INTEGER 
-    ciid INTEGER 
     pid INTEGER 
     oid INTEGER 
 */
@@ -100,11 +93,9 @@ CREATE TABLE Cart_Item (
 CREATE TABLE Manages (
   username VARCHAR(128),
   productname VARCHAR(128),
-  ciid INTEGER,
-  PRIMARY KEY (username, productname, ciid),
+  PRIMARY KEY (username, productname),
   CONSTRAINT fk_manages_username FOREIGN KEY (username) REFERENCES User_Details (username), 
   CONSTRAINT fk_manages_productname FOREIGN KEY (productname) REFERENCES Products (productname),
-  CONSTRAINT fk_manages_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
 );
 
 --User_Details (Makes) Payment
@@ -125,22 +116,13 @@ CREATE TABLE Belongs_to (
   CONSTRAINT fk_belongs_to_productname FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
---Product (Becomes) Cart_Item
-CREATE TABLE Becomes (
-  productname VARCHAR(128),
-  ciid INTEGER,
-  PRIMARY KEY (productname, ciid),
-  CONSTRAINT fk_becomes_productname FOREIGN KEY (productname) REFERENCES Products (productname), 
-  CONSTRAINT fk_becomes_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
-);
-
---Shopping_Cart (Made_of) Cart_Item
+--Shopping_Cart (Made_of) Products
 CREATE TABLE Made_of (
   sid INTEGER,
-  ciid INTEGER,
-  PRIMARY KEY (sid, ciid),
+  productname INTEGER,
+  PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
-  CONSTRAINT fk_made_of_ciid FOREIGN KEY (ciid) REFERENCES Cart_Item (ciid)
+  CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Product (productname)
 );
 
 --Payment (Paid_for) Shopping_Cart
@@ -379,34 +361,4 @@ INSERT INTO Shopping_Cart (sid, number_of_items) VALUES
 (7, 7),
 (8, 3),
 (9, 7)
-;
-
-INSERT INTO Cart_Item (ciid, quantity) VALUES 
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 2), 
-(6, 1),
-(7, 1),
-(8, 1),
-(9, 2),
-(10, 2),
-(11, 1),
-(12, 3),
-(13, 5),
-(14, 1),
-(15, 6),
-(16, 4),
-(17, 2),
-(18, 2),
-(19, 3),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
-(25, 2),
-(26, 1),
-(27, 2)
 ;
