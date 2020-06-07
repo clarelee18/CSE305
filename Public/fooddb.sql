@@ -84,18 +84,18 @@ CREATE TABLE Shopping_Cart (
     username VARCHAR(128)
     productname VARCHAR(128)
     subcategory VARCHAR(128)
-    cid INTEGER 
+    sid INTEGER 
     pid INTEGER 
     oid INTEGER 
 */
 
---User_Details (Manages) (Product (becomes) Cart_Item)
+--User_Details (Manages) Shopping_Cart
 CREATE TABLE Manages (
   username VARCHAR(128),
-  sid VARCHAR(128),
-  PRIMARY KEY (username, sid),
+  sid INTEGER,
+  PRIMARY KEY (username, productname),
   CONSTRAINT fk_manages_username FOREIGN KEY (username) REFERENCES User_Details (username), 
-  CONSTRAINT fk_manages_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid),
+  CONSTRAINT fk_manages_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid)
 );
 
 --User_Details (Makes) Payment
@@ -120,7 +120,6 @@ CREATE TABLE Belongs_to (
 CREATE TABLE Made_of (
   sid INTEGER,
   productname INTEGER,
-  quantity INTEGER,
   PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
   CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Product (productname)
@@ -408,3 +407,13 @@ INSERT INTO Belongs_to (productname, subcategory) VALUES
 ("Avocado Oil", "Oils"),
 ("Almond Oil", "Oils")
 ;
+
+INSERT INTO Manages (username, sid) VALUES 
+("kelly00", 1),
+("mark99", 2),
+("jean97", 3),
+("kid", 4),
+("sev", 5)
+;
+
+
