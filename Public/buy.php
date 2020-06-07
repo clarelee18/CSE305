@@ -41,41 +41,102 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Water & Beverages--
    if ($option_fiji) {
-      echo "Fiji: ". htmlentities($_POST['Fiji'], ENT_QUOTES, "UTF-8");
-   }
-   if ($option_samdasoo) {
-      echo "Samdasoo: ". htmlentities($_POST['Samdasoo'], ENT_QUOTES, "UTF-8");
-   }
+      $product_name = "Fiji";
+      $product_qty = $_POST['Fiji'];
+      //echo $product_name. ": " . $product_qty;
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
+  }
+  if ($option_samdasoo) {
+      $product_name = "Samdasoo";
+      $product_qty = $_POST['Samdasoo'];
+      //echo $product_name. ": " . $product_qty;
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
+  }       
    if ($option_sprite) {
-      echo "Sprite: ". htmlentities($_POST['Sprite'], ENT_QUOTES, "UTF-8");
+      $product_name = "Sprite";
+      $product_qty = $_POST['Sprite'];
+      //echo "Sprite: ". htmlentities($_POST['Sprite'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_pepsi) {
-      echo "Pepsi: ". htmlentities($_POST['Pepsi'], ENT_QUOTES, "UTF-8");
+      $product_name = "Pepsi";
+      $product_qty = $_POST['Pepsi'];
+      //echo "Pepsi: ". htmlentities($_POST['Pepsi'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_latte) {
-      echo "Latte: ". htmlentities($_POST['Latte'], ENT_QUOTES, "UTF-8");
+      $product_name = "Latte";
+      $product_qty = $_POST['Latte'];
+      //cho "Latte: ". htmlentities($_POST['Latte'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_americano) {
-      echo "Americano: ". htmlentities($_POST['Americano'], ENT_QUOTES, "UTF-8");
+      $product_name = "Americano";
+      $product_qty = $_POST['Americano'];
+      //echo "Americano: ". htmlentities($_POST['Americano'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_peppermint) {
-      echo "Peppermint Tea: ". htmlentities($_POST['Peppermint'], ENT_QUOTES, "UTF-8");
+      $product_name = "Peppermint";
+      $product_qty = $_POST['Peppermint'];
+      //echo "Peppermint Tea: ". htmlentities($_POST['Peppermint'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_rooibos) {
-      echo "Rooibos Tea: ". htmlentities($_POST['Rooibos'], ENT_QUOTES, "UTF-8");
+      $product_name = "Rooibos";
+      $product_qty = $_POST['Rooibos'];
+      //echo "Rooibos Tea: ". htmlentities($_POST['Rooibos'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_orange) {
-      echo "Orange Juice: ". htmlentities($_POST['Orange'], ENT_QUOTES, "UTF-8");
+      $product_name = "Orange";
+      $product_qty = $_POST['Orange'];
+      //echo "Orange Juice: ". htmlentities($_POST['Orange'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_apple) {
-      echo "Apple Juice: ". htmlentities($_POST['Apple'], ENT_QUOTES, "UTF-8");
+      $product_name = "Apple";
+      $product_qty = $_POST['Apple'];
+      //echo "Apple Juice: ". htmlentities($_POST['Apple'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_strawberry) {
-      echo "Strawberry Milk: ". htmlentities($_POST['Strawberry'], ENT_QUOTES, "UTF-8");
+      $product_name = "Strawberry";
+      $product_qty = $_POST['Strawberry'];
+      //echo "Strawberry Milk: ". htmlentities($_POST['Strawberry'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_banana) {
-      echo "Banana Milk: ". htmlentities($_POST['Banana'], ENT_QUOTES, "UTF-8");
+      $product_name = "Banana";
+      $product_qty = $_POST['Banana'];
+      //echo "Banana Milk: ". htmlentities($_POST['Banana'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
+   
    
    // --Meat & Poultry--
    $option_beef_chuck = isset($_POST['Beef_Chuck']) ? $_POST['Beef_Chuck'] : false;
@@ -89,28 +150,68 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Meat & Poultry--
    if ($option_beef_chuck) {
-      echo "Beef Chuck: ". htmlentities($_POST['Beef_Chuck'], ENT_QUOTES, "UTF-8");
+      $product_name = "Beef_Chuck";
+      $product_qty = $_POST['Beef_Chuck'];
+      //echo "Beef Chuck: ". htmlentities($_POST['Beef_Chuck'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_beef_rib) {
-      echo "Beef Rib: ". htmlentities($_POST['Beef_Rib'], ENT_QUOTES, "UTF-8");
+      $product_name = "Beef_Rib";
+      $product_qty = $_POST['Beef_Rib'];
+      //echo "Beef Rib: ". htmlentities($_POST['Beef_Rib'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_bacon) {
-      echo "Bacon: ". htmlentities($_POST['Bacon'], ENT_QUOTES, "UTF-8");
+      $product_name = "Bacon";
+      $product_qty = $_POST['Bacon'];
+      //echo "Bacon: ". htmlentities($_POST['Bacon'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_sausage) {
-      echo "Sausage: ". htmlentities($_POST['Sausage'], ENT_QUOTES, "UTF-8");
+      $product_name = "Sausage";
+      $product_qty = $_POST['Sausage'];
+      //echo "Sausage: ". htmlentities($_POST['Sausage'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_chicken_breast) {
-      echo "Chicken Breast: ". htmlentities($_POST['Chicken_Breast'], ENT_QUOTES, "UTF-8");
+      $product_name = "Chicken_Breast";
+      $product_qty = $_POST['Chicken_Breast'];
+      //echo "Chicken Breast: ". htmlentities($_POST['Chicken_Breast'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_chicken_thigh) {
-      echo "Chicken Thigh: ". htmlentities($_POST['Chicken_Thigh'], ENT_QUOTES, "UTF-8");
+      $product_name = "Chicken_Thigh";
+      $product_qty = $_POST['Chicken_Thigh'];
+      //echo "Chicken Thigh: ". htmlentities($_POST['Chicken_Thigh'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_duck_eggs) {
-      echo "Duck Eggs: ". htmlentities($_POST['Duck_Eggs'], ENT_QUOTES, "UTF-8");
+      $product_name = "Duck_Eggs";
+      $product_qty = $_POST['Duck_Eggs'];
+      //echo "Duck Eggs: ". htmlentities($_POST['Duck_Eggs'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_chicken_eggs) {
-      echo "Chicken Eggs: ". htmlentities($_POST['Chicken_Eggs'], ENT_QUOTES, "UTF-8");
+      $product_name = "Chicken_Eggs";
+      $product_qty = $_POST['Chicken_Eggs'];
+      //echo "Chicken Eggs: ". htmlentities($_POST['Chicken_Eggs'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    
    // --Seafood--
@@ -123,22 +224,52 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Seafood--
    if ($option_tuna) {
-      echo "Tuna: ". htmlentities($_POST['Tuna'], ENT_QUOTES, "UTF-8");
+      $product_name = "Tuna";
+      $product_qty = $_POST['Tuna'];
+      //echo "Tuna: ". htmlentities($_POST['Tuna'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_salmon) {
-      echo "Salmon: ". htmlentities($_POST['Salmon'], ENT_QUOTES, "UTF-8");
+      $product_name = "Salmon";
+      $product_qty = $_POST['Salmon'];
+      //echo "Salmon: ". htmlentities($_POST['Salmon'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_scallop) {
-      echo "Scallop: ". htmlentities($_POST['Scallop'], ENT_QUOTES, "UTF-8");
+      $product_name = "Scallop";
+      $product_qty = $_POST['Scallop'];
+      //echo "Scallop: ". htmlentities($_POST['Scallop'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_oyster) {
-      echo "Oyster: ". htmlentities($_POST['Oyster'], ENT_QUOTES, "UTF-8");
+      $product_name = "Oyster";
+      $product_qty = $_POST['Oyster'];
+      //echo "Oyster: ". htmlentities($_POST['Oyster'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_laver) {
-      echo "Laver: ". htmlentities($_POST['Laver'], ENT_QUOTES, "UTF-8");
+      $product_name = "Laver";
+      $product_qty = $_POST['Laver'];
+      //echo "Laver: ". htmlentities($_POST['Laver'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_dried_squid) {
-      echo "Dried Squid: ". htmlentities($_POST['Dried_Squid'], ENT_QUOTES, "UTF-8");
+      $product_name = "Dried_Squid";
+      $product_qty = $_POST['Dried_Squid'];
+      //echo "Dried Squid: ". htmlentities($_POST['Dried_Squid'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    
    // --Bread & Snacks--
@@ -153,28 +284,68 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Bread & Snacks--
    if ($option_popcorn) {
-      echo "Popcorn: ". htmlentities($_POST['Popcorn'], ENT_QUOTES, "UTF-8");
+      $product_name = "Popcorn";
+      $product_qty = $_POST['Popcorn'];
+      //echo "Popcorn: ". htmlentities($_POST['Popcorn'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_pretzel) {
-      echo "Pretzel: ". htmlentities($_POST['Pretzel'], ENT_QUOTES, "UTF-8");
+      $product_name = "Pretzel";
+      $product_qty = $_POST['Pretzel'];
+      //echo "Pretzel: ". htmlentities($_POST['Pretzel'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_baguette) {
-      echo "Baguette: ". htmlentities($_POST['Baguette'], ENT_QUOTES, "UTF-8");
+      $product_name = "Baguette";
+      $product_qty = $_POST['Baguette'];
+      //echo "Baguette: ". htmlentities($_POST['Baguette'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_white_bread) {
-      echo "White Bread: ". htmlentities($_POST['White_Bread'], ENT_QUOTES, "UTF-8");
+      $product_name = "White_Bread";
+      $product_qty = $_POST['White_Bread'];
+      //echo "White Bread: ". htmlentities($_POST['White_Bread'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_melona) {
-      echo "Melona: ". htmlentities($_POST['Melona'], ENT_QUOTES, "UTF-8");
+      $product_name = "Melona";
+      $product_qty = $_POST['Melona'];
+      //echo "Melona: ". htmlentities($_POST['Melona'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_world_cone) {
-      echo "World Cone: ". htmlentities($_POST['World_Cone'], ENT_QUOTES, "UTF-8");
+      $product_name = "World_Cone";
+      $product_qty = $_POST['World_Cone'];
+      //echo "World Cone: ". htmlentities($_POST['World_Cone'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_skittles) {
-      echo "Skittles: ". htmlentities($_POST['Skittles'], ENT_QUOTES, "UTF-8");
+      $product_name = "Skittles";
+      $product_qty = $_POST['Skittles'];
+      //echo "Skittles: ". htmlentities($_POST['Skittles'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_starburst) {
-      echo "Starburst: ". htmlentities($_POST['Starburst'], ENT_QUOTES, "UTF-8");
+      $product_name = "Starburst";
+      $product_qty = $_POST['Starburst'];
+      //echo "Starburst: ". htmlentities($_POST['Starburst'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    
    // --Processed Food--
@@ -189,30 +360,69 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Processed Food--
    if ($option_udon_noodles) {
-      echo "Udon Noodles: ". htmlentities($_POST['Udon_Noodles'], ENT_QUOTES, "UTF-8");
+      $product_name = "Udon_Noodles";
+      $product_qty = $_POST['Udon_Noodles'];
+      //echo "Udon Noodles: ". htmlentities($_POST['Udon_Noodles'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_soba_soodles) {
-      echo "Soba Noodles: ". htmlentities($_POST['Soba_Noodles'], ENT_QUOTES, "UTF-8");
+      $product_name = "Soba_Noodles";
+      $product_qty = $_POST['Soba_Noodles'];
+      //echo "Soba Noodles: ". htmlentities($_POST['Soba_Noodles'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_blackberry_jam) {
-      echo "Blackberry Jam: ". htmlentities($_POST['Blackberry_Jam'], ENT_QUOTES, "UTF-8");
+      $product_name = "Blackberry_Jam";
+      $product_qty = $_POST['Blackberry_Jam'];
+      //echo "Blackberry Jam: ". htmlentities($_POST['Blackberry_Jam'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_apricot_jam) {
-      echo "Apricot Jam: ". htmlentities($_POST['Apricot_Jam'], ENT_QUOTES, "UTF-8");
+      $product_name = "Apricot_Jam";
+      $product_qty = $_POST['Apricot_Jam'];
+      //echo "Apricot Jam: ". htmlentities($_POST['Apricot_Jam'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_cumin) {
-      echo "Cumin: ". htmlentities($_POST['Cumin'], ENT_QUOTES, "UTF-8");
+      $product_name = "Cumin";
+      $product_qty = $_POST['Cumin'];
+      //echo "Cumin: ". htmlentities($_POST['Cumin'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_cinnamon) {
-      echo "Cinnamon: ". htmlentities($_POST['Cinnamon'], ENT_QUOTES, "UTF-8");
+      $product_name = "Cinnamon";
+      $product_qty = $_POST['Cinnamon'];
+      //echo "Cinnamon: ". htmlentities($_POST['Cinnamon'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_avocado_oil) {
-      echo "Avocado Oil: ". htmlentities($_POST['Avocado_Oil'], ENT_QUOTES, "UTF-8");
+      $product_name = "Avocado_Oil";
+      $product_qty = $_POST['Avocado_Oil'];
+      //echo "Avocado Oil: ". htmlentities($_POST['Avocado_Oil'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
    if ($option_almond_oil) {
-      echo "Almond Oil: ". htmlentities($_POST['Almond_Oil'], ENT_QUOTES, "UTF-8");
+      $product_name = "Almond_Oil";
+      $product_qty = $_POST['Almond_Oil'];
+      //echo "Almond Oil: ". htmlentities($_POST['Almond_Oil'], ENT_QUOTES, "UTF-8");
+      $newproduct = array($product_name, $product_qty);
+      array_push($_SESSION['product'], $newproduct);
+      header("location: checkout.php");
    }
-   
   ?>
   
 </body>

@@ -9,11 +9,16 @@ session_start();
 
 <head>
     <title>Checkout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; text-align: center; }
+    </style>
 </head>
 
 <body>
+<p><a href="index.php"><h2>Homepage</h2></a></p>
+    <p><a href="cart.php" class="btn btn-primary">Back to cart</a></p>
     <h2>checkout</h2>
-
     <p>Order list: <?php
      foreach($_SESSION['product'] as $cart_list) {
         for($i = 0 ; $i < count($cart_list) ; $i++) {
@@ -31,5 +36,8 @@ session_start();
         <option value=3>credit card</option>
         <option value=4>mobile payment</option>
     </select>
-    <p><a href="index.php">Homepage</a></p>
+    <br>
+    <!--have to add the query to remember the user payment method-->
+    <p><a href="order.php" class="btn btn-danger">Order</a></p>
+    
 </body>
