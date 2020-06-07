@@ -1,24 +1,11 @@
 <?php
-require_once 'login.php';
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-if ($conn->connect_error) die($conn->connect_error);
-
-require_once "../application/cart.php";
-
 // Initialize the session
 session_start();
-print_r($_SESSION);
-
+ 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
-}
-//session_destroy();
-
-// initialize a shopping cart
-if (!isset($_SESSION['cart'])) {
-   $_SESSION['cart'] = new ShoppingCart();
 }
 ?>
  
