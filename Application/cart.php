@@ -6,6 +6,7 @@
 class ShoppingCart {
     
     // need to fetch the data, name (and cost?) of the products and make it into an array
+    
 
     // initialize the cart 
     public function __construct() {
@@ -20,6 +21,7 @@ class ShoppingCart {
         // increment the quantity of specific type of product
         $currentQuantity += $quantity;
         $this->productList[$product] = $currentQuantity;
+        // --> SQL query that create an row of Made_of with sid, productname, quantity
     }
 
     // get the product list for the cart
