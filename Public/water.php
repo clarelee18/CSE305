@@ -27,6 +27,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <table style="width:100%">
   <tr>
     <td><h3>Water</h3></td>
+    <div class="popup" onclick="popupFunction()">Water
+        <span class="popuptext" id="waterpopup">
+    </div>
     
     <td>Fiji<p><img src="pictures/Fiji.jpg" alt="Fiji" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">

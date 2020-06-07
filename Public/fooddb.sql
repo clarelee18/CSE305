@@ -162,9 +162,7 @@ CREATE TABLE Has (
   CONSTRAINT fk_has_pid FOREIGN KEY (pid) REFERENCES Payment (pid),
   CONSTRAINT fk_has_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid)
 );
--- need to add more relations 
 
-------------------------------------------------------------------------------
 INSERT INTO User_Details (username, password, first_name, last_name, email, birthdate) VALUES 
 ("kelly00", "0002", "Kelly", "Peng", "01@gmail.com", "2000-04-14"),
 ("mark99", "0002", "Mark", "Lee", "02@hotmail.com", "1999-08-02"),
