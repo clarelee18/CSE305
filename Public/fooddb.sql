@@ -356,7 +356,7 @@ INSERT INTO Shopping_Cart (sid, number_of_items) VALUES
 (2, 2),
 (3, 3),
 (4, 5),
-(5, 10), 
+(5, 10)
 ;
 
 INSERT INTO Belongs_to (productname, subcategory) VALUES 
