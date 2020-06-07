@@ -92,10 +92,10 @@ CREATE TABLE Shopping_Cart (
 --User_Details (Manages) (Product (becomes) Cart_Item)
 CREATE TABLE Manages (
   username VARCHAR(128),
-  productname VARCHAR(128),
-  PRIMARY KEY (username, productname),
+  sid VARCHAR(128),
+  PRIMARY KEY (username, sid),
   CONSTRAINT fk_manages_username FOREIGN KEY (username) REFERENCES User_Details (username), 
-  CONSTRAINT fk_manages_productname FOREIGN KEY (productname) REFERENCES Products (productname),
+  CONSTRAINT fk_manages_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid),
 );
 
 --User_Details (Makes) Payment
@@ -120,6 +120,7 @@ CREATE TABLE Belongs_to (
 CREATE TABLE Made_of (
   sid INTEGER,
   productname INTEGER,
+  quantity INTEGER,
   PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
   CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Product (productname)
