@@ -61,7 +61,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["uid"] = $uid;
-                            $_SESSION["username"] = $username;                            
+                            $_SESSION["username"] = $username;
+                            
+                            // Set session variables for cart item
+                            $_SESSION["product"] = array();                            
                             
                             // Redirect user to welcome page
                             header("location: welcome.php");
