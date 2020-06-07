@@ -15,6 +15,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 //session_destroy();
 ?>
+
+<?php
+// initialize a shopping cart
+if (!isset($_SESSION['cart'])) {
+   $_SESSION['cart'] = new ShoppingCart();
+}
+?>
  
 <!DOCTYPE html>
 <html lang="en">

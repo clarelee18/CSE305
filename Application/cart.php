@@ -11,6 +11,7 @@ class ShoppingCart {
     }
 
     // add product to the cart, given productname and quantity
+    // --> have to insert into Becomes, Made_of tables
     public function productList ($product, $quantity) {
         // obtain the current quantity of the product
         $currentQuantity = $this->productList[$product];
