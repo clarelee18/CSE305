@@ -1,7 +1,10 @@
 <?php
-  require_once 'logininfo.php';
-  $conn = new mysqli($hn, $un, $pw, $db);
-  if ($conn->connect_error) die($conn->connect_error);
+require_once 'logininfo.php';
+$conn = new mysqli($hn, $un, $pw, $db);
+if ($conn->connect_error) die($conn->connect_error);
+
+require "../application/cart.php";
+
 // Initialize the session
 session_start();
 
