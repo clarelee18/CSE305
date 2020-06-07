@@ -1,3 +1,4 @@
+
 <?php
 // Initialize the session
 session_start();
@@ -22,8 +23,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </p>
   
   <h2>Cart</h2>
-  
+
   <?php   
+  //--SQL
+   //$conn = mysqli_connect('localhost','root','root','fooddb');
+   //if (mysqli_connect_errno()){
+   //   echo "Failed to connect to MySQL: " . mysqli_connect_error();
+   //}
+
   // --Water & Beverages--
   $option_fiji = isset($_POST['Fiji']) ? $_POST['Fiji'] : false;
   $option_samdasoo = isset($_POST['Samdasoo']) ? $_POST['Samdasoo'] : false;
@@ -45,6 +52,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       //echo $product_name. ": " . $product_qty;
       $newproduct = array($product_name, $product_qty);
       array_push($_SESSION['product'], $newproduct);
+      //--SQL
+      //$sql = "INSERT INTO Made_of (sid, productname) VALUES (1, 'Fiji')";
   }
   if ($option_samdasoo) {
       $product_name = "Samdasoo";
@@ -392,6 +401,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     }
   }
    
+  //--SQL
+  /*$sql = mysqli_query($conn, "SELECT productname FROM Made_of WHERE sid=1");
+      echo "<table border='1'>";
+      while($row = mysqli_fetch_array($sql)){
+         echo "<tr>";
+         echo "<td>" . $row['productname'] . "</td>";
+         echo "<td>" . $row['quantity'] . "</td>";
+         echo "</tr>";
+      }
+      echo "</table>";
+      mysqli_close($conn);
+   */
   ?>
   
 </body>

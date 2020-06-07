@@ -350,7 +350,7 @@ INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES -- free ove
 
 
 INSERT INTO Shopping_Cart (sid, number_of_items) VALUES 
-(1, 4),
+(1, 0),
 (2, 2),
 (3, 3),
 (4, 5),
