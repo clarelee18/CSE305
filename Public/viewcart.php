@@ -31,6 +31,7 @@ if (!isset($_SESSION['cart'])) {
 <body>
   <p>
         <a href="index.php">Go to Main</a>
+        <br><a href="welcome.php" class="btn btn-danger">MyPage</a>
         <br><a href="logout.php" class="btn btn-danger">Logout</a>
   </p>
   

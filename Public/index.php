@@ -26,6 +26,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </head>
 
 <body>
+<p>
+        <a href="welcome.php" class="btn btn-danger">MyPage</a>
+</p>
 <h2>Homepage</h2>
   <table style="width:100%">
   <tr>
