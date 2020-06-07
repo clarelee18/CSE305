@@ -93,7 +93,7 @@ CREATE TABLE Shopping_Cart (
 CREATE TABLE Manages (
   username VARCHAR(128),
   sid INTEGER,
-  PRIMARY KEY (username, productname),
+  PRIMARY KEY (username, sid),
   CONSTRAINT fk_manages_username FOREIGN KEY (username) REFERENCES User_Details (username), 
   CONSTRAINT fk_manages_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid)
 );
@@ -122,7 +122,7 @@ CREATE TABLE Made_of (
   productname INTEGER,
   PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
-  CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Product (productname)
+  CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
 --Payment (Paid_for) Shopping_Cart
@@ -357,10 +357,6 @@ INSERT INTO Shopping_Cart (sid, number_of_items) VALUES
 (3, 3),
 (4, 5),
 (5, 10), 
-(6, 10),
-(7, 7),
-(8, 3),
-(9, 7)
 ;
 
 INSERT INTO Belongs_to (productname, subcategory) VALUES 
