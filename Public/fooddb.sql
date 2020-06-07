@@ -158,9 +158,7 @@ INSERT INTO User_Ordering (username, delivery_addr, contact_number) VALUES
 ("mark99", "incheon", "01048573837"),
 ("kid", "busan", "01056462734"),
 ("kelly00", "busan", "01058495838"),
-("sev", "daegu", "01042322936"),
-("kid", "daejeon", "01023163789"),
-("jean97", "ulsan", "01012345678");
+("sev", "daegu", "01042322936");
 
 INSERT INTO User_Address (delivery_addr, postal_code) VALUES
 ("incheon", 434),
