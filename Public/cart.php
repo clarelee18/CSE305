@@ -391,6 +391,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     echo ($cart_list[$i])."<br/>";
     }
   }
+  
+  // create mysqli object 
+  require_once 'config.php';  
+  $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+  if ($conn->connect_error) die($conn->connect_error);
+
+  if ($option_fiji || $option_samdasoo) {
+    //select cost from products where productname = "Fiji";
+    $query = "SELECT cost FROM Products WHERE productname = '". $product_name."'";
+    $result   = $conn->query($query);
+    if (!$result) echo "SELECT failed: $query<br>" .
+      $conn->error . "<br><br>";
+      
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        echo "Price: ". $row["cost"]. " Won <br>";
+      }
+    }
+  }
+  
+  $conn->close();
    
   ?>
   
