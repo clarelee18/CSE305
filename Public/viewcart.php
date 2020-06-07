@@ -1,9 +1,8 @@
 <?php
-require_once 'logininfo.php';
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if ($conn->connect_error) die($conn->connect_error);
 
-require "../application/cart.php";
+require_once "../application/cart.php";
 
 // Initialize the session
 session_start();
@@ -14,9 +13,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 //session_destroy();
-?>
 
-<?php
 // initialize a shopping cart
 if (!isset($_SESSION['cart'])) {
    $_SESSION['cart'] = new ShoppingCart();
