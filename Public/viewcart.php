@@ -7,6 +7,7 @@ require_once "../application/cart.php";
 
 // Initialize the session
 session_start();
+print_r($_SESSION);
 
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -34,7 +35,14 @@ if (!isset($_SESSION['cart'])) {
   </p>
   
   <h2>Cart</h2>
-  
+
+   <!-- 
+     <p></?php
+     $_SESSON['cart']-> display();
+
+     ?></p>
+  -->
+
   <?php
    // --Water & Beverages--
    $option_fiji = isset($_POST['Fiji']) ? $_POST['Fiji'] : false;
