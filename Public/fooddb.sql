@@ -122,7 +122,7 @@ CREATE TABLE Made_of (
   productname INTEGER,
   PRIMARY KEY (sid, productname),
   CONSTRAINT fk_made_of_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid), 
-  CONSTRAINT productname FOREIGN KEY (productname) REFERENCES Products (productname)
+  CONSTRAINT fk_made_of_productname FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
 --Payment (Paid_for) Shopping_Cart
