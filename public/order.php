@@ -69,7 +69,6 @@ if ($conn->connect_error) die($conn->connect_error);
             <input type="text" id="address" name="address"><br><br>
             <label for="number">Contact Number: </label><br>
             <input type="text" id="number" name="number"><br><br>
-            <input type="submit" value="Confirm">
             <input type = "hidden" name = "user" value="address">
             <input type = "hidden" name = "user" value="number">
             <input type="submit" value="Confirm">
