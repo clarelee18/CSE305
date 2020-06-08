@@ -83,7 +83,8 @@ if ($conn->connect_error) die($conn->connect_error);
             if($totalCost < 40000){
                 $paymentFee = 2000;
             }
-        ?>
+        ?><br>
+        <p>Total Cost: <?php echo $totalCost; ?> </p>
         <p>Payment Fee: <?php echo $paymentFee; ?> </p>
 
         <?php
