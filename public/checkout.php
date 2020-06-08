@@ -41,7 +41,7 @@ if (mysqli_connect_errno()){
         <option value=1>Bank Transfer</option>
         <option value=2>Cash</option>
         <option value=3>Credit Card</option>
-        <option value=4>mMobile pPayment</option>
+        <option value=4>Mobile pPayment</option>
     </select>
     <br><br>
     <!--have to add the query to remember the user payment method-->
