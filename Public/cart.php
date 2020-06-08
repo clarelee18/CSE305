@@ -13,14 +13,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Cart</title>
+   <title>Cart</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <p>
-      <a href="index.php" class="btn btn-primary">Go to Main</a>
-      <br><a href="logout.php" class="btn btn-danger">Logout</a>
-      <a href="checkout.php" class="btn btn-primary">checkout</a>
-  </p>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.php">Online Grocery</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="index.php">Home</a></li>
+      <li><a href="welcome.php">My Page</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+  </nav>
   
   <h2>Cart</h2>
 
