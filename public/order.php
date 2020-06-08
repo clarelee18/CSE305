@@ -79,12 +79,18 @@ if (mysqli_connect_errno()){
 
     <!--adding the details of the order: list, payment method, payment time, address....-->
     <!--Things that have to be done: 
-        1. Store the order info into db (inside orders.php possibly)
-        4. once hit confirm, Remove the items in the cart (Session info)
+        4. once hit confirm, Remove the items in the cart & update db (Session info)
+        5. Store the order info into db...
+            Order_Shipping_Fee - total_price, delivery_charge
+            Order_History - oid, total_price, total_quantity
+            Payment - pid, payment_method, payment_date, payment_time
+            User_Address - delivery_addr, postal_code
+            User_Ordering - username, delivery_addr, contact_number
+            Has (order history has payment) - oid, pid, sid
+            Paid_for (payment paid for shopping cart) - sid, pid
     -->
     <p>
     <?php
-
         $query = "SELECT MAX(oid) FROM Order_History";
         $result   = $con->query($query);
         $row = mysqli_fetch_assoc($result);
