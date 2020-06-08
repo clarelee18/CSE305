@@ -61,7 +61,6 @@ CREATE TABLE Payment (
 
 CREATE TABLE Order_History (
   oid INTEGER NOT NULL,
-  shipping_date DATE NOT NULL,
   total_price INTEGER NOT NULL,
   total_quantity INTEGER NOT NULL,
   PRIMARY KEY (oid)
@@ -324,15 +323,15 @@ INSERT INTO Payment (pid, payment_method, payment_date, payment_time) VALUES
 
 
 INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALUES 
-(1, "2019-06-09", 49500, 4), -- blackberry, apricot, soba, almond
-(2, "2020-02-10", 40000, 2), -- oyster*2
-(3, "2020-04-17", 5100, 3), -- chichen thigh, chicken egg, banana milk
-(4, "2019-09-12", 43000, 5), -- Salmon*2, sausage*2, beef chunk steak
-(5, "2019-11-23", 41200, 10), -- latte*3, americao*5, almond oil, beef chunck steak 
-(6, "2020-04-25", 9600, 10), -- Melona*6, world cone*4
-(7, "2020-06-03", 13000, 7), -- skittles*2, starbust*2, fiji*3
-(8, "2019-01-17", 30000, 3), -- salmon, scallop, udon noodles
-(9, "2020-05-13", 44500, 7); -- blackberry jam, apricot jam, white bread*2, cinnamon, latte*3
+(1, 49500, 4), -- blackberry, apricot, soba, almond
+(2, 40000, 2), -- oyster*2
+(3, 5100, 3), -- chichen thigh, chicken egg, banana milk
+(4, 43000, 5), -- Salmon*2, sausage*2, beef chunk steak
+(5, 41200, 10), -- latte*3, americao*5, almond oil, beef chunck steak 
+(6, 9600, 10), -- Melona*6, world cone*4
+(7, 13000, 7), -- skittles*2, starbust*2, fiji*3
+(8, 30000, 3), -- salmon, scallop, udon noodles
+(9, 44500, 7); -- blackberry jam, apricot jam, white bread*2, cinnamon, latte*3
 
 /* Free over 40000 */
 INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES
