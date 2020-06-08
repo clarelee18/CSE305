@@ -37,12 +37,28 @@ if (mysqli_connect_errno()){
       }
     ?></p>
     <h3><br>Choose a method to pay for the order.</h3>
-    <select name="payment method" id="payment method">
-        <option value=1>Bank Transfer</option>
-        <option value=2>Cash</option>
-        <option value=3>Credit Card</option>
-        <option value=4>Mobile Payment</option>
-    </select>
+    
+    <?php 
+    function displayPaymentMethods ($username) {
+        echo <<<_END
+        <td>Payment method
+        <form action="order.php" method="post">
+        <select name="$username" id="$username">
+            <option value="bank transfer">bank transfer</option>
+            <option value="cash">cash</option>
+            <option value="credit card">credit card</option>
+            <option value="mobile payment">mobile payment</option>
+        </select>
+        <input type = "hidden" name = "user" value="$username">
+        <input type="submit" value="Order now">
+        </form>
+        </td>
+        _END;
+    }
+    $username = $_SESSION["username"];
+    displayPaymentMethods($username);
+    ?>
+    
     <br><br>
     <!--have to add the query to remember the user payment method-->
     <!--Things that have to be done: 
@@ -51,6 +67,6 @@ if (mysqli_connect_errno()){
         3. tells if the payment fee is needed 
         4. once hit confirm, Remove the items in the cart (Session info)
     -->
-    <p><a href="order.php" class="btn btn-danger">Order</a></p>
+    <!-- <p><a href="order.php" class="btn btn-danger">Order</a></p>-->
     
 </body>

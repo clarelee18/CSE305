@@ -35,7 +35,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
             <li><a href="cart.php">View Cart</a></li>
-            <li><a href="order.php">View Orders</a></li>
+            <li><a href="orders.php">View Orders</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

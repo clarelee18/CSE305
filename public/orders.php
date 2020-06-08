@@ -18,7 +18,7 @@ if (mysqli_connect_errno()){
 <html lang="en">
 
 <head>
-    <title>Order</title>
+    <title>Order History</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,18 +40,7 @@ if (mysqli_connect_errno()){
     </div>
      </nav>
     <!--adding the details of the order: list, payment method, payment time, address....-->
-    <P>
-    <?php
-        $username = $_SESSION["username"];
-        function getPaymentMethod($payment_method) {
-            echo "hi";
-            echo $payment_method;
-        }
-
-        if (isset($_POST['$username'])){
-            getPaymentMethod($_POST['$username']);
-        }
-    ?>    
+    <P> 
     </p>
 </body>
 </html>
