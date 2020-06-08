@@ -85,8 +85,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>White Bread<p><img src="pictures/White Bread.jpg" alt="White Bread" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="White_Bread">Qty:</label>
-    <select name="White_Bread" id="White_Bread">
+    <label for="WhiteBread">Qty:</label>
+    <select name="WhiteBread" id="WhiteBread">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -117,8 +117,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>World Cone<p><img src="pictures/World Cone.jpg" alt="World Cone" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="World_Cone">Qty:</label>
-    <select name="World_Cone" id="World_Cone">
+    <label for="WorldCone">Qty:</label>
+    <select name="WorldCone" id="WorldCone">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>

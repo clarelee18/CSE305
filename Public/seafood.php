@@ -117,8 +117,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Dried Squid<p><img src="pictures/Dried Squid.jpg" alt="Dried Squid" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Dried_Squid">Qty:</label>
-    <select name="Dried_Squid" id="Dried_Squid">
+    <label for="DriedSquid">Qty:</label>
+    <select name="DriedSquid" id="DriedSquid">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>

@@ -39,8 +39,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Beef Chuck<p><img src="pictures/Beef Chuck Steak.jpeg" alt="Beef Chuck" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Beef_Chuck">Qty:</label>
-    <select name="Beef_Chuck" id="Beef_Chuck">
+    <label for="BeefChuckSteak">Qty:</label>
+    <select name="BeefChuckSteak" id="BeefChuckSteak">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -53,8 +53,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Beef Rib<p><img src="pictures/Beef Short Ribs.png" alt="Beef Rib" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Beef_Rib">Qty:</label>
-    <select name="Beef_Rib" id="Beef_Rib">
+    <label for="BeefShortRibs">Qty:</label>
+    <select name="BeefShortRibs" id="BeefShortRibs">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -103,8 +103,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Chicken Breast<p><img src="pictures/Chicken Breast.jpg" alt="Chicken Breast" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Chicken_Breast">Qty:</label>
-    <select name="Chicken_Breast" id="Chicken_Breast">
+    <label for="ChickenBreast">Qty:</label>
+    <select name="ChickenBreast" id="ChickenBreast">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -117,8 +117,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Chicken Thigh<p><img src="pictures/Chicken Thigh.jpg" alt="Chicken Thigh" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Chicken_Thigh">Qty:</label>
-    <select name="Chicken_Thigh" id="Chicken_Thigh">
+    <label for="ChickenThigh">Qty:</label>
+    <select name="ChickenThigh" id="ChickenThigh">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -135,8 +135,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Duck Eggs<p><img src="pictures/Duck Egg.jpg" alt="Duck Eggs" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Duck_Eggs">Qty:</label>
-    <select name="Duck_Eggs" id="Duck_Eggs">
+    <label for="DuckEgg">Qty:</label>
+    <select name="DuckEgg" id="DuckEgg">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -149,8 +149,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Chicken Eggs<p><img src="pictures/Chicken Egg.jpg" alt="Chicken Eggs" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Chicken_Eggs">Qty:</label>
-    <select name="Chicken_Eggs" id="Chicken_Eggs">
+    <label for="ChickenEgg">Qty:</label>
+    <select name="ChickenEgg" id="ChickenEgg">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>

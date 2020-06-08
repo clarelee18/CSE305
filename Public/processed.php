@@ -39,8 +39,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Udon Noodles<p><img src="pictures/Udon Noodles.jpg" alt="Udon Noodles" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Udon_Noodles">Qty:</label>
-    <select name="Udon_Noodles" id="Udon_Noodles">
+    <label for="UdonNoodles">Qty:</label>
+    <select name="UdonNoodles" id="UdonNoodles">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -53,8 +53,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Soba Noodles<p><img src="pictures/Soba Noodles.jpg" alt="Soba Noodles" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Soba_Noodles">Qty:</label>
-    <select name="Soba_Noodles" id="Soba_Noodles">
+    <label for="SobaNoodles">Qty:</label>
+    <select name="SobaNoodles" id="SobaNoodles">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -71,8 +71,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Blackberry Jam<p><img src="pictures/Blackberry Jam.jpg" alt="Blackberry Jam" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Blackberry_Jam">Qty:</label>
-    <select name="Blackberry_Jam" id="Blackberry_Jam">
+    <label for="BlackberryJam">Qty:</label>
+    <select name="BlackberryJam" id="BlackberryJam">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -85,8 +85,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Apricot Jam<p><img src="pictures/Apricot Jam.jpg" alt="Apricot Jam" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Apricot_Jam">Qty:</label>
-    <select name="Apricot_Jam" id="Apricot_Jam">
+    <label for="ApricotJam">Qty:</label>
+    <select name="ApricotJam" id="ApricotJam">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -135,8 +135,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Avocado Oil<p><img src="pictures/Avocado Oil.jpg" alt="Avocado Oil" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Avocado_Oil">Qty:</label>
-    <select name="Avocado_Oil" id="Avocado_Oil">
+    <label for="AvocadoOil">Qty:</label>
+    <select name="AvocadoOil" id="AvocadoOil">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -149,8 +149,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     
     <td>Almond Oil<p><img src="pictures/Almond Oil.jpg" alt="Almond Oil" style="width:128px;height:128px;"></p>
     <form action="cart.php" method="post">
-    <label for="Almond_Oil">Qty:</label>
-    <select name="Almond_Oil" id="Almond_Oil">
+    <label for="AlmondOil">Qty:</label>
+    <select name="AlmondOil" id="AlmondOil">
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
