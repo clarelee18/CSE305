@@ -50,16 +50,10 @@ if ($conn->connect_error) die($conn->connect_error);
     -->
 
     <!--to use the input value from order page-->
-    <?php $address =  $_POST["address"]; ?>
-    <?php $contactNumber =  $_POST["number"]; ?> 
-    
-    <?php
-    $query = "SELECT MAX(oid) FROM Order_History";
-        $result   = $con->query($query);
-        $row = mysqli_fetch_assoc($result);
-        $oidLast = $row['sid']+1;
-
-        
-    ?>
+    <?php $address =  $_POST["address"]; 
+          echo $address;
+          $contactNumber =  $_POST["number"]; 
+          echo $contactNumber;
+    ?> 
 </body>
 </html>
