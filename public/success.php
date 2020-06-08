@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 <?php
-$_SESSION["product"] = array();
+
 
 require_once 'config.php';  
 $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -94,6 +94,8 @@ if ($conn->connect_error) die($conn->connect_error);
       $query1 = "insert into order_history (oid, total_price, total_quantity) values ($oidLast, $totalCost, $totalquantity)";
       $result1 = $conn->query($query1);
       echo $oidLast;
+
+      $_SESSION["product"] = array();
         
     ?>
 </body>
