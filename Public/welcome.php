@@ -30,11 +30,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
         <a href="index.php"><h2>Go to Main</h2>
         <a href="cart.php" class="btn btn-primary">View Cart</a>
+        <a href="order.php" class="btn btn-primary">View Orders</a>
         <a href="logout.php" class="btn btn-danger">Logout</a>
     </p>
   <br><h3>User information: </h3>
     <p>
         <?php 
+            $username = $_SESSION["username"];
+            // echo $username;
+            $result = mysqli_query($conn, "SELECT * From User_Details WHERE username='$username'");
+            if (!$result) die ("Database access failed: " . $conn->error);
+            $resultCheck = mysqli_num_rows($result);
+            if ($resultCheck > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    echo 'First Name: '   . $row['first_name']   . '<br>';
+                    echo 'Last Name: '    . $row['last_name']    . '<br>';
+                    echo 'Email Address: '    . $row['email']    . '<br>';
+                    echo 'Date of Birth: '    . $row['birthdate']    . '<br>';
+                }
+            }
+
+
             $username = $_SESSION["username"];
             // echo $username;
             $result = mysqli_query($conn, "SELECT * From User_Ordering WHERE username='$username'");
