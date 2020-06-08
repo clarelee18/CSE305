@@ -28,16 +28,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to MyPage.</h1>
     </div>
     <p>
-        <?php 
-            $username = htmlspecialchars($_SESSION["username"]);
-            $query = "SELECT * From User_Ordering WHERE username='$username'";
-            $result = $conn -> query($query);
-            if (!$result) die ("Database access failed: " . $conn->error);
-            echo htmlspecialchars($result); // doesn't work, don't know how to display it
-        ?>
         <a href="index.php"><h2>Go to Main</h2>
         <a href="cart.php" class="btn btn-primary">View Cart</a>
         <a href="logout.php" class="btn btn-danger">Logout</a>
+    </p>
+    <p>User information: </p>
+    <p>
+        <?php 
+            $username = $_SESSION["username"];
+            echo $username;
+            $query = "SELECT * From User_Ordering WHERE username=$username";
+            $result = mysqli_query($conn, $query);
+            if (!$result) die ("Database access failed: " . $conn->error);
+            $resultCheck = mysqli_num_rows($result);
+            if ($resultCheck > 0) {
+                echo 'have rows';
+                while ($row = mysql_fetch_assoc($result)) {
+                    echo 'Address: '   . $row['delivery_address']   . '<br>';
+                    echo 'Contact Number: '    . $row['contact_number']    . '<br>';
+                }
+            }
+
+            mysqli_close($conn);
+        ?>
     </p>
 </body>
 </html>
