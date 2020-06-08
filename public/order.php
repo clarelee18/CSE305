@@ -72,19 +72,20 @@ if (mysqli_connect_errno()){
         <?php 
         function displayContact () {
             echo <<<_END
+            <td>
             <form action="success.php" method="post">
             <label for="address">Delivery Address: </label><br>  
             <input type="text" id="address" name="address"><br><br>
             <label for="number">Contact Number: </label><br>
             <input type="text" id="number" name="number"><br><br>
             <input type="submit" value="Confirm">
-            <input type = "hidden" name = "user" value="payOption">
-            <input type="submit" value="Order Now">
+            <input type = "hidden" name = "user" value="contact">
+            <input type="submit" value="Confirm">
             </form>
             </td>
             _END;
         }
-        displayPaymentMethods();
+        displayContact();
         ?>
         <?php
             $paymentFee = 0;
