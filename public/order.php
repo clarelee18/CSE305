@@ -69,6 +69,23 @@ if (mysqli_connect_errno()){
         </form><br><br>
         <p>Total Cost: <?php echo $totalCost; ?> </p>
 
+        <?php 
+        function displayContact () {
+            echo <<<_END
+            <form action="success.php" method="post">
+            <label for="address">Delivery Address: </label><br>  
+            <input type="text" id="address" name="address"><br><br>
+            <label for="number">Contact Number: </label><br>
+            <input type="text" id="number" name="number"><br><br>
+            <input type="submit" value="Confirm">
+            <input type = "hidden" name = "user" value="payOption">
+            <input type="submit" value="Order Now">
+            </form>
+            </td>
+            _END;
+        }
+        displayPaymentMethods();
+        ?>
         <?php
             $paymentFee = 0;
             if($totalCost < 40000){
@@ -76,19 +93,6 @@ if (mysqli_connect_errno()){
             }
         ?>
         <p>Payment Fee: <?php echo $paymentFee; ?> </p>
-
-    <!--adding the details of the order: list, payment method, payment time, address....-->
-    <!--Things that have to be done: 
-        4. once hit confirm, Remove the items in the cart & update db (Session info)
-        5. Store the order info into db...
-            Order_Shipping_Fee - total_price, delivery_charge
-            Order_History - oid, total_price, total_quantity
-            Payment - pid, payment_method, payment_date, payment_time
-            User_Address - delivery_addr, postal_code
-            User_Ordering - username, delivery_addr, contact_number
-            Has (order history has payment) - oid, pid, sid
-            Paid_for (payment paid for shopping cart) - sid, pid
-    -->
     <p>
     <?php
         $query = "SELECT MAX(oid) FROM Order_History";
