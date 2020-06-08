@@ -60,14 +60,6 @@ if (mysqli_connect_errno()){
         ?><br><br>
 
         <p>Payment Method: <?php echo $_POST["payOption"]; ?></p><br>
-        <form action="orders.php">
-        <label for="address">Delivery Address: </label><br>  <!--specific address has specific postal code (look at db)-->
-        <input type="text" id="address" name="address"><br><br>
-        <label for="number">Contact Number: </label><br>
-        <input type="text" id="number" name="number"><br><br>
-        <input type="submit" value="Confirm">
-        </form><br><br>
-        <p>Total Cost: <?php echo $totalCost; ?> </p>
 
         <?php 
         function displayContact () {
@@ -79,7 +71,8 @@ if (mysqli_connect_errno()){
             <label for="number">Contact Number: </label><br>
             <input type="text" id="number" name="number"><br><br>
             <input type="submit" value="Confirm">
-            <input type = "hidden" name = "user" value="contact">
+            <input type = "hidden" name = "user" value="address">
+            <input type = "hidden" name = "user" value="number">
             <input type="submit" value="Confirm">
             </form>
             </td>

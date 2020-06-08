@@ -49,7 +49,10 @@ if (mysqli_connect_errno()){
             Has (order history has payment) - oid, pid, sid
             Paid_for (payment paid for shopping cart) - sid, pid
     -->
-    <?php echo $_POST["address"]; ?>
+
+    <!--to use the input value from order page-->
+    <?php $address =  $_POST["address"]; ?>
+    <?php $contactNumber =  $_POST["number"]; ?> 
 
 </body>
 </html>
