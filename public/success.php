@@ -42,8 +42,6 @@ if ($conn->connect_error) die($conn->connect_error);
      </nav>
     <!--remove the item list from the session after finish using it-->
     <!--update the following tables...
-            Order_Shipping_Fee - total_price, delivery_charge
-            Order_History - oid, total_price, total_quantity
             Payment - pid, payment_method, payment_date, payment_time
             User_Address - delivery_addr, postal_code
             User_Ordering - username, delivery_addr, contact_number
@@ -94,9 +92,12 @@ if ($conn->connect_error) die($conn->connect_error);
       $query1 = "insert into order_history (oid, total_price, total_quantity) values ($oidLast, $totalCost, $totalquantity)";
       $result1 = $conn->query($query1);
       echo $oidLast;
+      
+      // Order_Shipping_Fee
+      $query2 = "insert into order_shipping_fee (total_price, delivery_charge) values ($totalCost, $paymentFee)";
+      $result2 = $conn->query($query2);  
 
       $_SESSION["product"] = array();
-        
     ?>
 </body>
 </html>
