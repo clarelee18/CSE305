@@ -38,7 +38,7 @@ if ($conn->connect_error) die($conn->connect_error);
         </ul>
     </div>
      </nav>
-    <!--adding the details of the order: list, payment method, payment time, address....-->
+    <!--remove the item list from the session after finish using it-->
     <!--update the following tables...
             Order_Shipping_Fee - total_price, delivery_charge
             Order_History - oid, total_price, total_quantity
