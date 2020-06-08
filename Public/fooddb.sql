@@ -322,7 +322,7 @@ INSERT INTO Payment (pid, payment_method, payment_date, payment_time) VALUES
 
 
 
-INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALUES 
+INSERT INTO Order_History (oid, total_price, total_quantity) VALUES 
 (1, 49500, 4), -- blackberry, apricot, soba, almond
 (2, 40000, 2), -- oyster*2
 (3, 5100, 3), -- chichen thigh, chicken egg, banana milk
