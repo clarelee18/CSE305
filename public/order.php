@@ -8,10 +8,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 <?php
-$conn = mysqli_connect('localhost','root','root','fooddb');
-if (mysqli_connect_errno()){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+require_once 'config.php';  
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+if ($conn->connect_error) die($conn->connect_error);
 ?>
 
 <!DOCTYPE html>
@@ -87,15 +86,12 @@ if (mysqli_connect_errno()){
             }
         ?>
         <p>Payment Fee: <?php echo $paymentFee; ?> </p>
-    <p>
-    <?php
-        $query = "SELECT MAX(oid) FROM Order_History";
-        $result   = $con->query($query);
-        $row = mysqli_fetch_assoc($result);
-        $oidLast = $row['sid']+1;
 
+        <?php
+        $fee = $_SESSION[$paymentFee];
+        $totalFee = $_SESSION[$paymentFee];
+        
+        ?>
 
-    ?>    
-    </p>
 </body>
 </html>
