@@ -23,6 +23,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <head>
 <title>Water & Beverages</title>
+<style>
+th, td {
+  border: 1px ridge #2980B9;
+}
+</style>
 </head>
 
 <body>
@@ -37,194 +42,173 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <tr>
     <td><h3>Water</h3></td>
     
-    <td>Fiji<p><img src="pictures/Fiji.jpg" alt="Fiji" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Fiji">Qty:</label>
-    <select name="Fiji" id="Fiji">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    <?php
     
-    <td>Samdasoo<p><img src="pictures/Samdasoo.jpeg" alt="Samdasoo" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Samdasoo">Qty:</label>
-    <select name="Samdasoo" id="Samdasoo">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    // function for displaying products
+    function displayProducts($productname, $image, $price, $description) {
+      echo <<<_END
+      <td>$productname: $price Won
+      <p><img src="pictures/$image" alt="$productname" style="width:128px;height:128px;"></p>
+      <br>description: $description<br>
+      <form action="cart.php" method="post">
+      <label for="$productname">Qty:</label>
+      <select name="$productname" id="$productname">
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      </select>
+      <input type="submit" value="Add to Cart">
+      <input type="submit" value="Buy Now" formaction="buy.php">
+      </form>
+      </td>
+      _END;
+    }
+    
+    // create mysqli object 
+    require_once 'config.php';  
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
+    
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'water'";
+    // select P.* from products P, belongs_to B 
+    // where P.productname = B.productname AND B.subcategory = 'water';
+    
+    //echo $query ."<br/>";
+    
+    $result = $conn -> query($query);
+    
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        //echo "ProductName: ". $row["productname"]." Price: ". $row["cost"]. " Won <br>";
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
     
   </tr>
   <tr>
     <td><h3>Soda</h3></td>
     
-    <td>Sprite<p><img src="pictures/Sprite.jpg" alt="Sprite" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Sprite">Qty:</label>
-    <select name="Sprite" id="Sprite">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    <?php
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
     
-    <td>Pepsi<p><img src="pictures/Pepsi.jpeg" alt="Pepsi" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Pepsi">Qty:</label>
-    <select name="Pepsi" id="Pepsi">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'soda'";
+    
+    $result = $conn -> query($query);
+    
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
     
   </tr>
   <tr>
     <td><h3>Coffee</h3></td>
+    <?php
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
     
-    <td>Latte<p><img src="pictures/Latte.jpg" alt="Latte" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Latte">Qty:</label>
-    <select name="Latte" id="Latte">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'coffee'";
     
-    <td>Americano<p><img src="pictures/Americano.jpg" alt="Americano" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="Americano">Qty:</label>
-    <select name="Americano" id="Americano">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $result = $conn -> query($query);
     
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
   </tr>
   <tr>
     <td><h3>Tea</h3></td>
+    <?php
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
     
-    <td>Peppermint Tea<p><img src="pictures/Peppermint Tea.jpg" alt="Peppermint Tea" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="PeppermintTea">Qty:</label>
-    <select name="PeppermintTea" id="PeppermintTea">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'tea'";
     
-    <td>Rooibos Tea<p><img src="pictures/Rooibos Tea.jpg" alt="Rooibos Tea" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="RooibosTea">Qty:</label>
-    <select name="RooibosTea" id="RooibosTea">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $result = $conn -> query($query);
     
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
   </tr>
   <tr>
     <td><h3>Juice</h3></td>
+    <?php
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
     
-    <td>Orange Juice<p><img src="pictures/Orange Juice.jpeg" alt="Orange Juice" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="OrangeJuice">Qty:</label>
-    <select name="OrangeJuice" id="OrangeJuice">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'juice'";
     
-    <td>Apple Juice<p><img src="pictures/Apple Juice.jpg" alt="Apple Juice" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="AppleJuice">Qty:</label>
-    <select name="AppleJuice" id="AppleJuice">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $result = $conn -> query($query);
     
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
   </tr>
   <tr>
     <td><h3>Milk</h3></td>
+    <?php
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    if ($conn->connect_error) die($conn->connect_error);
     
-    <td>Strawberry Milk<p><img src="pictures/Strawberry Milk.jpg" alt="Strawberry Milk" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="StrawberryMilk">Qty:</label>
-    <select name="StrawberryMilk" id="StrawberryMilk">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $query = "SELECT P.* FROM products P, belongs_to B "
+    ."WHERE P.productname = B.productname AND B.subcategory = 'milk'";
     
-    <td>Banana Milk<p><img src="pictures/Banana Milk.jpg" alt="Banana Milk" style="width:128px;height:128px;"></p>
-    <form action="cart.php" method="post">
-    <label for="BananaMilk">Qty:</label>
-    <select name="BananaMilk" id="BananaMilk">
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    </select>
-    <input type="submit" value="Add to Cart">
-    <input type="submit" value="Buy Now" formaction="buy.php">
-    </form>
-    </td>
+    $result = $conn -> query($query);
     
+    // Perform query
+    if ($result && $result->num_rows > 0) {
+      while($row = $result->fetch_assoc()){
+        displayProducts($row["productname"], $row["image"], $row["cost"], $row["description"]);
+        }
+      } else {
+        echo "0 results";
+    }
+        
+    $conn->close();
+    ?>
   </tr>
   </table>
 
