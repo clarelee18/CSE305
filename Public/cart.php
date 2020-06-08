@@ -65,17 +65,38 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       $row = mysqli_fetch_assoc($result);
       $cartID = $row['sid'];
 
-
+/*
       if(mysqli_query($link, $sql)){
         echo "Records added successfully.";
     } else{
         echo "ERROR: Could not able to execute $cartID. " . mysqli_error($link);
     }
-
+*/
       $product_name = $_POST['product'];
-      $product_price = intval($_POST['price']) * intval($product_qty);
-      $newproduct = array($product_name, $product_qty, $product_price);
-      array_push($_SESSION['product'], $newproduct);
+      $product_qty = intval($product_qty);
+      $product_price = intval($_POST['price']);
+      $total_price = $product_price * $product_qty;
+      
+      // check if the array has same item
+      $length = count($_SESSION['product']);
+      $position = $length;
+      
+      for($i = 0; $i < $length; $i++) {
+          if ($_SESSION['product'][$i][0] == $product_name) {
+            $position = $i;
+            break;
+            }
+        }
+      if ($position == $length) {
+        $newproduct = array($product_name, $product_qty, $total_price, $product_price);
+        array_push($_SESSION['product'], $newproduct);
+      }
+      else {
+        // add it to previous value of the quantity
+        $_SESSION['product'][$position][1] += $product_qty;
+        $_SESSION['product'][$position][2] += $total_price; 
+      }
+      
       //--SQL
       //addProduct($product_name, $product_qty);
       //need to modify query statement???
@@ -285,6 +306,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       </tr>
   _END;
   
+  $order_price = 0;
   foreach($_SESSION['product'] as $cart_list) {
       echo <<<_END
         <tr>
@@ -294,13 +316,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         </tr>        
       _END;
       
+      $order_price += $cart_list[2];
+      
     //echo $cart_list[$i]."\t";
     //echo '<td>'.$_SESSION['product'][$i].'</td>';
     //var_dump($cart_list[$i]);
     //print_r($cart_list);
   }
-  
-  echo "</table>";
+  echo <<<_END
+  <tr>
+  <td></td>
+  <td>Total: </td>
+  <td>$order_price &nbsp Won</td>
+  </tr>
+  </table>
+  _END;
+//  echo "</table>";
   
   // create mysqli object 
   //require_once 'config.php';  
