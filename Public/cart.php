@@ -44,7 +44,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </nav>
   
   <h2>Cart</h2>
-  <p><a href="checkout.php" class="btn btn-primary">checkout</a></p>
+  <p><a href="checkout.php" class="btn btn-primary">Checkout</a></p>
 
   <?php   
   

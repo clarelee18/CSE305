@@ -40,7 +40,18 @@ if (mysqli_connect_errno()){
     </div>
      </nav>
     <!--adding the details of the order: list, payment method, payment time, address....-->
-    <P> 
-    </p>
+    <?php
+        
+
+
+
+
+
+
+
+
+    ?>
+
+
 </body>
 </html>

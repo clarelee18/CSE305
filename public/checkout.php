@@ -1,11 +1,9 @@
 <?php
 session_start();
-?>
-<?php
-$conn = mysqli_connect('localhost','root','root','fooddb');
-if (mysqli_connect_errno()){
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+
+require_once 'config.php';  
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+if ($conn->connect_error) die($conn->connect_error);
 ?>
 
 <!--if the session is just -->
@@ -35,38 +33,35 @@ if (mysqli_connect_errno()){
         }
         echo "<br>";
       }
-    ?></p>
+    ?>
     <h3><br>Choose a method to pay for the order.</h3>
     
     <?php 
-    function displayPaymentMethods ($username) {
+    function displayPaymentMethods () {
         echo <<<_END
         <td>Payment method
         <form action="order.php" method="post">
-        <select name="$username" id="$username">
-            <option value="bank transfer">bank transfer</option>
-            <option value="cash">cash</option>
-            <option value="credit card">credit card</option>
-            <option value="mobile payment">mobile payment</option>
+        <select name="payOption" id="payOption">
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Cash">Cash</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Mobile Payment">Mobile Payment</option>
         </select>
-        <input type = "hidden" name = "user" value="$username">
-        <input type="submit" value="Order now">
+        <input type = "hidden" name = "user" value="payOption">
+        <input type="submit" value="Order Now">
         </form>
         </td>
         _END;
     }
-    $username = $_SESSION["username"];
-    displayPaymentMethods($username);
+    displayPaymentMethods();
     ?>
     
     <br><br>
     <!--have to add the query to remember the user payment method-->
-    <!--Things that have to be done: 
-        1. Store the order info into db 
-        2. tells the total amount of the payment
-        3. tells if the payment fee is needed 
-        4. once hit confirm, Remove the items in the cart (Session info)
-    -->
     <!-- <p><a href="order.php" class="btn btn-danger">Order</a></p>-->
     
+
+
+
 </body>
+</html>
