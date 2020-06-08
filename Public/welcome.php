@@ -1,5 +1,8 @@
 <?php
 // Initialize the session
+require_once "config.php"; 
+$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+if ($conn->connect_error) die($conn->connect_error);
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
@@ -25,6 +28,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to MyPage.</h1>
     </div>
     <p>
+        <?php 
+            $username = htmlspecialchars($_SESSION["username"]);
+            $query = "SELECT * From User_Ordering WHERE username='$username'";
+            $result = $conn -> query($query);
+            if (!$result) die ("Database access failed: " . $conn->error);
+            echo htmlspecialchars($result); // doesn't work, don't know how to display it
+        ?>
         <a href="index.php"><h2>Go to Main</h2>
         <a href="cart.php" class="btn btn-primary">View Cart</a>
         <a href="logout.php" class="btn btn-danger">Logout</a>

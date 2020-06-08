@@ -64,7 +64,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;
                             
                             // Set session variables for cart item
-                            $_SESSION["product"] = array();                            
+                            $_SESSION["product"] = array();   
+                            
+                                          
                             
                             // Redirect user to welcome page
                             header("location: welcome.php");

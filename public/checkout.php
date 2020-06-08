@@ -1,6 +1,12 @@
 <?php
 session_start();
 ?>
+<?php
+$conn = mysqli_connect('localhost','root','root','fooddb');
+if (mysqli_connect_errno()){
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+?>
 
 <!--if the session is just -->
 
@@ -22,9 +28,9 @@ session_start();
     <p>Order list: <?php
      foreach($_SESSION['product'] as $cart_list) {
         for($i = 0 ; $i < count($cart_list) ; $i++) {
-         if ($i == 1) {
-           $cart_list[$i] = intval($cart_list[$i]);
-           }
+        if ($i == 1) {
+            $cart_list[$i] = intval($cart_list[$i]);
+        }
         echo ($cart_list[$i])."<br/>";
         }
       }
@@ -38,6 +44,12 @@ session_start();
     </select>
     <br>
     <!--have to add the query to remember the user payment method-->
+    <!--Things that have to be done: 
+        1. Store the order info into db 
+        2. tells the total amount of the payment
+        3. tells if the payment fee is needed 
+        4. once hit confirm, Remove the items in the cart (Session info)
+    -->
     <p><a href="order.php" class="btn btn-">Order</a></p>
     
 </body>
