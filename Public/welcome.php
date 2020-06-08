@@ -36,12 +36,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
         <?php 
             $username = $_SESSION["username"];
-            echo $username;
+            // echo $username;
             $result = mysqli_query($conn, "SELECT * From User_Ordering WHERE username='$username'");
             if (!$result) die ("Database access failed: " . $conn->error);
             $resultCheck = mysqli_num_rows($result);
             if ($resultCheck > 0) {
-                echo ' has rows:<br>';
+                // echo ' has rows:<br>';
                 while ($row = mysqli_fetch_array($result)) {
                     echo '<br>Address: '   . $row['delivery_addr']   . '<br>';
                     echo 'Contact Number: '    . $row['contact_number']    . '<br>';
