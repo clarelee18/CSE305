@@ -248,8 +248,8 @@ accompanying fat). People who eat enough protein are more likely to maintain mus
 ("ChickenThigh", "Chicken Thigh.jpg", "Chicken thighs are the top part of the chicken leg where it connects to
  the body (as opposed to the drumstick, which is the bottom half). Because they are dark meat, chicken
   thighs cook up moist and tender.", 1800),
-("DuckEgg", "Duck Egg.jpg", "A duck egg��s white tends to be nearly transparent, lacking the slight yellowish tint
- some chicken eggs have. Its yolk, though, is what��s so prized by chefs: a duck yolk is much bigger than
+("DuckEgg", "Duck Egg.jpg", "A duck egg??s white tends to be nearly transparent, lacking the slight yellowish tint
+ some chicken eggs have. Its yolk, though, is what??s so prized by chefs: a duck yolk is much bigger than
   a chicken yolk.", 1000),
 ("ChickenEgg", "Chicken Egg.jpg", "In the chicken egg, there is a balance of numerous, high quality nutrients, many
  of which are highly bioavailable. The egg confers a multitude of health benefits to consumers emphasizing
@@ -366,8 +366,8 @@ INSERT INTO Belongs_to (productname, subcategory) VALUES
 ("Americano", "Coffee"),
 ("PeppermintTea","Tea"),
 ("RooibosTea","Tea"),
-("Orange Juice", "Juice"),
-("Apple Juice", "Juice"),
+("OrangeJuice", "Juice"),
+("AppleJuice", "Juice"),
 ("StrawberryMilk", "Milk"),
 ("BananaMilk", "Milk"),
 ("BeefChuckSteak", "Beef"),
@@ -389,15 +389,15 @@ INSERT INTO Belongs_to (productname, subcategory) VALUES
 ("Baguette", "Bread"),
 ("WhiteBread", "Bread"),
 ("Melona", "Ice Cream"),
-("World Cone", "Ice Cream"),
+("WorldCone", "Ice Cream"),
 ("Skittles", "Candy"),
 ("Starburst", "Candy"),
 ("UdonNoodles", "Noodles"),
 ("SobaNoodles", "Noodles"),
 ("BlackberryJam", "Jams"),
 ("ApricotJam", "Jams"),
-("Cumin", "Seasonings & Spice"),
-("Cinnamon", "Seasonings & Spice"),
+("Cumin", "Seasonings & Spices"),
+("Cinnamon", "Seasonings & Spices"),
 ("AvocadoOil", "Oils"),
 ("AlmondOil", "Oils")
 ;
