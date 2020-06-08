@@ -27,6 +27,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.php">Home</a></li>
       <li><a href="welcome.php">My Page</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="water.php">Water & Beverages</a></li>
+          <li><a href="meat.php">Meat & Poultry</a></li>
+          <li><a href="seafood.php">Seafood</a></li>
+          <li><a href="bread.php">Bread & Snacks</a></li>
+          <li><a href="processed.php">Processed Food</a></li>
+        </ul>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

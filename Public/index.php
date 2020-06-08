@@ -48,27 +48,59 @@ session_start();
     </ul>
   </div>
 </nav>
-  <table style="width:100%">
-  <tr>
-    <td><a href="water.php"  title="Water & Beverages">Water & Beverages</a></td>
-    <td><p><img src="pictures/water_beverages.jpg"></p></td>
-  </tr>
-  <tr>
-    <td><a href="meat.php"  title="Meat & Poultry">Meat & Poultry</a></td>
-    <td><p><img src="pictures/meat_poultry.jpg"></p></td>
-  </tr>
-  <tr>
-    <td><a href="seafood.php"  title="Seafood">Seafood</a></td>
-    <td><p><img src="pictures/seafood.jpg"></p></td>
-  </tr>
-  <tr>
-    <td><a href="bread.php"  title="Bread & Snacks">Bread & Snacks</a></td>
-    <td><p><img src="pictures/bread_snacks.jpg"></p></td>
-  </tr>
-  <tr>
-    <td><a href="processed.php"  title="Processed Food">Processed Food</a></td>
-    <td><p><img src="pictures/processed food.jpg"></p></td>
-  </tr>
-  </table>
+<div class="row1">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="water.php" target="_self">
+          <img src="pictures/water_beverages.jpg" alt="Water & Beverages" style="width:100%">
+          <div class="caption">
+            <p>Water & Beverages</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="meat.php" target="_self">
+          <img src="pictures/meat_poultry.jpg" alt="Meat & Poultry" style="width:100%">
+          <div class="caption">
+            <p>Meat & Poultry</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="seafood.php" target="_self">
+          <img src="pictures/seafood.jpg" alt="Seafood" style="width:100%">
+          <div class="caption">
+            <p>Seafood</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="bread.php" target="_self">
+          <img src="pictures/bread_snacks.jpg" alt="Bread & Snacks" style="width:100%">
+          <div class="caption">
+            <p>Bread & Snacks</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="processed.php" target="_self">
+          <img src="pictures/processed food.jpg" alt="Processed Food" style="width:100%">
+          <div class="caption">
+            <p>Processed Food</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
