@@ -14,7 +14,7 @@ USE fooddb;
 
 CREATE TABLE User_Details (
   username VARCHAR(128) NOT NULL, -- assertion: should be unique
-  password VARCHAR(128) NOT NULL, -- assertion: contains at least 5 characters, at least 1 number, and at least 1 special character (!@#$%^&*)
+  password VARCHAR(128) NOT NULL,
 	first_name VARCHAR(128) NOT NULL,
 	last_name VARCHAR(128) NOT NULL,
 	email VARCHAR(128) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE Shopping_Cart (
   PRIMARY KEY (sid)
 );
 
---tables that relate entities
+/*tables that relate entities*/
 /*  all the keys: 
     username VARCHAR(128)
     productname VARCHAR(128)
@@ -89,7 +89,7 @@ CREATE TABLE Shopping_Cart (
     oid INTEGER 
 */
 
---User_Details (Manages) Shopping_Cart
+/*User_Details (Manages) Shopping_Cart*/
 CREATE TABLE Manages (
   username VARCHAR(128),
   sid INTEGER,
@@ -98,7 +98,7 @@ CREATE TABLE Manages (
   CONSTRAINT fk_manages_sid FOREIGN KEY (sid) REFERENCES Shopping_Cart (sid)
 );
 
---User_Details (Makes) Payment
+/*User_Details (Makes) Payment*/
 CREATE TABLE Makes (
   username VARCHAR(128),
   pid INTEGER,
@@ -107,7 +107,7 @@ CREATE TABLE Makes (
   CONSTRAINT fk_makes_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
---Product (Belongs_to) Category
+/*Product (Belongs_to) Category*/
 CREATE TABLE Belongs_to (
   productname VARCHAR(128),
   subcategory VARCHAR(128),
@@ -116,7 +116,7 @@ CREATE TABLE Belongs_to (
   CONSTRAINT fk_belongs_to_productname FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
---Shopping_Cart (Made_of) Products
+/*Shopping_Cart (Made_of) Products*/
 CREATE TABLE Made_of (
   sid INTEGER,
   productname VARCHAR(128),
@@ -125,7 +125,7 @@ CREATE TABLE Made_of (
   FOREIGN KEY (productname) REFERENCES Products (productname)
 );
 
---Payment (Paid_for) Shopping_Cart
+/*Payment (Paid_for) Shopping_Cart*/
 CREATE TABLE Paid_for (
   sid INTEGER,
   pid INTEGER,
@@ -134,7 +134,7 @@ CREATE TABLE Paid_for (
   CONSTRAINT fk_paid_for_pid FOREIGN KEY (pid) REFERENCES Payment (pid)
 );
 
---Order_History Has (Payment (Paid_for) Shopping_Cart)
+/*Order_History Has (Payment (Paid_for) Shopping_Cart)*/
 CREATE TABLE Has (
   oid INTEGER,
   pid INTEGER,
@@ -195,7 +195,6 @@ INSERT INTO Category (subcategory, category) VALUES
 ("Canned Goods", "Processed Food"),
 ("Instant Noodles", "Processed Food");
 
----------------------ADD IMAGES-----------------------------------------------
 INSERT INTO Products (productname, image, description, cost) VALUES 
 ("Fiji", "Fiji.jpg", "The unique mineral profile, which contributes to FIJI Water's signature soft, 
 smooth taste, reflects The Nature of Water sourced from an artesian aquifer and untouched 
@@ -335,8 +334,8 @@ INSERT INTO Order_History (oid, shipping_date, total_price, total_quantity) VALU
 (8, "2019-01-17", 30000, 3), -- salmon, scallop, udon noodles
 (9, "2020-05-13", 44500, 7); -- blackberry jam, apricot jam, white bread*2, cinnamon, latte*3
 
-
-INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES -- free over 40000
+/* Free over 40000 */
+INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES
 (49500, 0),
 (40000, 0),
 (5100, 2000),
