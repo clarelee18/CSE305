@@ -24,8 +24,8 @@ if (mysqli_connect_errno()){
 <body>
 <p><a href="index.php"><h2>Homepage</h2></a></p>
     <p><a href="cart.php" class="btn btn-primary">Back to cart</a></p>
-    <h2>checkout</h2>
-    <p>Order list: <?php
+    <h2>Checkout</h2>
+    <h3>Order list: <br></h3><?php
      foreach($_SESSION['product'] as $cart_list) {
         for($i = 0 ; $i < count($cart_list) ; $i++) {
         if ($i == 1) {
@@ -33,16 +33,17 @@ if (mysqli_connect_errno()){
         }
         echo ($cart_list[$i])."<br/>";
         }
+        echo "<br>";
       }
     ?></p>
-    <p>Choose a method to pay for the order.</p>
+    <h3><br>Choose a method to pay for the order.</h3>
     <select name="payment method" id="payment method">
-        <option value=1>bank transfer</option>
-        <option value=2>cash</option>
-        <option value=3>credit card</option>
-        <option value=4>mobile payment</option>
+        <option value=1>Bank Transfer</option>
+        <option value=2>Cash</option>
+        <option value=3>Credit Card</option>
+        <option value=4>mMobile pPayment</option>
     </select>
-    <br>
+    <br><br>
     <!--have to add the query to remember the user payment method-->
     <!--Things that have to be done: 
         1. Store the order info into db 
@@ -50,6 +51,6 @@ if (mysqli_connect_errno()){
         3. tells if the payment fee is needed 
         4. once hit confirm, Remove the items in the cart (Session info)
     -->
-    <p><a href="order.php" class="btn btn-">Order</a></p>
+    <p><a href="order.php" class="btn btn-danger">Order</a></p>
     
 </body>
