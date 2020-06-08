@@ -40,6 +40,15 @@ if (mysqli_connect_errno()){
     </div>
      </nav>
     <!--adding the details of the order: list, payment method, payment time, address....-->
+    <!--update the following tables...
+            Order_Shipping_Fee - total_price, delivery_charge
+            Order_History - oid, total_price, total_quantity
+            Payment - pid, payment_method, payment_date, payment_time
+            User_Address - delivery_addr, postal_code
+            User_Ordering - username, delivery_addr, contact_number
+            Has (order history has payment) - oid, pid, sid
+            Paid_for (payment paid for shopping cart) - sid, pid
+    -->
     <?php
         
 
