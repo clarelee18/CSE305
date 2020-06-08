@@ -38,6 +38,6 @@ session_start();
     </select>
     <br>
     <!--have to add the query to remember the user payment method-->
-    <p><a href="order.php" class="btn btn-danger">Order</a></p>
+    <p><a href="order.php" class="btn btn-">Order</a></p>
     
 </body>
