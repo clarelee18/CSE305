@@ -25,10 +25,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   <h2>Cart</h2>
 
   <?php   
+  
   //--SQL
   require_once 'config.php';  
   $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
   if ($conn->connect_error) die($conn->connect_error);
+  
+  // function for managing cart item
+    function ManageCartItem($product_qty) {
+      $con = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+      if ($con->connect_error) die($con->connect_error);
+      
+      $product_name = $_POST['product'];
+      $product_price = intval($_POST['price']) * intval($product_qty);
+      $newproduct = array($product_name, $product_qty, $product_price);
+      array_push($_SESSION['product'], $newproduct);
+      //--SQL
+      //addProduct($product_name, $product_qty);
+      //need to modify query statement???
+      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
+      $result   = $con->query($query);
+      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
+      $result   = $con->query($query);
+    }
 
   // --Water & Beverages--
   $option_fiji = isset($_POST['Fiji']) ? $_POST['Fiji'] : false;
@@ -47,149 +66,40 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
   // --Water & Beverages--
   if ($option_fiji) {
-      $product_name = "Fiji";
-      $product_qty = $_POST['Fiji'];
-      //echo $product_name. ": " . $product_qty;
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      //addProduct($product_name, $product_qty);
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Fiji']);
   }
   if ($option_samdasoo) {
-      $product_name = "Samdasoo";
-      $product_qty = $_POST['Samdasoo'];
-      //echo $product_name. ": " . $product_qty;
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Samdasoo']);
   }       
-   if ($option_sprite) {
-      $product_name = "Sprite";
-      $product_qty = $_POST['Sprite'];
-      //echo "Sprite: ". htmlentities($_POST['Sprite'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
-   }
+  if ($option_sprite) {
+     ManageCartItem($_POST['Sprite']);
+  }
    if ($option_pepsi) {
-      $product_name = "Pepsi";
-      $product_qty = $_POST['Pepsi'];
-      //echo "Pepsi: ". htmlentities($_POST['Pepsi'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Pepsi']);
    }
    if ($option_latte) {
-      $product_name = "Latte";
-      $product_qty = $_POST['Latte'];
-      //cho "Latte: ". htmlentities($_POST['Latte'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Latte']);
    }
    if ($option_americano) {
-      $product_name = "Americano";
-      $product_qty = $_POST['Americano'];
-      //echo "Americano: ". htmlentities($_POST['Americano'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Americano']);
    }
    if ($option_peppermint) {
-      $product_name = "PeppermintTea";
-      $product_qty = $_POST['PeppermintTea'];
-      //echo "Peppermint Tea: ". htmlentities($_POST['PeppermintTea'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['PeppermintTea']);
    }
    if ($option_rooibos) {
-      $product_name = "RooibosTea";
-      $product_qty = $_POST['RooibosTea'];
-      //echo "Rooibos Tea: ". htmlentities($_POST['RooibosTea'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['RooibosTea']);
    }
    if ($option_orange) {
-      $product_name = "OrangeJuice";
-      $product_qty = $_POST['OrangeJuice'];
-      //echo "Orange Juice: ". htmlentities($_POST['OrangeJuice'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['OrangeJuice']);
    }
    if ($option_apple) {
-      $product_name = "AppleJuice";
-      $product_qty = $_POST['AppleJuice'];
-      //echo "Apple Juice: ". htmlentities($_POST['AppleJuice'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['AppleJuice']);
    }
    if ($option_strawberry) {
-      $product_name = "StrawberryMilk";
-      $product_qty = $_POST['StrawberryMilk'];
-      //echo "Strawberry Milk: ". htmlentities($_POST['StrawberryMilk'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['StrawberryMilk']);
    }
    if ($option_banana) {
-      $product_name = "BananaMilk";
-      $product_qty = $_POST['BananaMilk'];
-      //echo "Banana Milk: ". htmlentities($_POST['BananaMilk'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['BananaMilk']);
    }
    
    // --Meat & Poultry--
@@ -204,100 +114,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Meat & Poultry--
    if ($option_beef_chuck) {
-      $product_name = "BeefChuckSteak";
-      $product_qty = $_POST['BeefChuckSteak'];
-      //echo "Beef Chuck: ". htmlentities($_POST['BeefChuckSteak'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['BeefChuckSteak']);
    }
    if ($option_beef_rib) {
-      $product_name = "BeefShortRibs";
-      $product_qty = $_POST['BeefShortRibs'];
-      //echo "Beef Rib: ". htmlentities($_POST['BeefShortRibs'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['BeefShortRibs']);
    }
    if ($option_bacon) {
-      $product_name = "Bacon";
-      $product_qty = $_POST['Bacon'];
-      //echo "Bacon: ". htmlentities($_POST['Bacon'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Bacon']);
    }
    if ($option_sausage) {
-      $product_name = "Sausage";
-      $product_qty = $_POST['Sausage'];
-      //echo "Sausage: ". htmlentities($_POST['Sausage'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Sausage']);
    }
    if ($option_chicken_breast) {
-      $product_name = "ChickenBreast";
-      $product_qty = $_POST['ChickenBreast'];
-      //echo "Chicken Breast: ". htmlentities($_POST['ChickenBreast'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['ChickenBreast']);
    }
    if ($option_chicken_thigh) {
-      $product_name = "ChickenThigh";
-      $product_qty = $_POST['ChickenThigh'];
-      //echo "Chicken Thigh: ". htmlentities($_POST['ChickenThigh'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['ChickenThigh']);
    }
    if ($option_duck_eggs) {
-      $product_name = "DuckEgg";
-      $product_qty = $_POST['DuckEgg'];
-      //echo "Duck Eggs: ". htmlentities($_POST['DuckEgg'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['DuckEgg']);
    }
    if ($option_chicken_eggs) {
-      $product_name = "ChickenEgg";
-      $product_qty = $_POST['ChickenEgg'];
-      //echo "Chicken Eggs: ". htmlentities($_POST['ChickenEgg'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['ChickenEgg']);
    }
    
    // --Seafood--
@@ -310,76 +148,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Seafood--
    if ($option_tuna) {
-      $product_name = "Tuna";
-      $product_qty = $_POST['Tuna'];
-      //echo "Tuna: ". htmlentities($_POST['Tuna'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Tuna']);
    }
    if ($option_salmon) {
-      $product_name = "Salmon";
-      $product_qty = $_POST['Salmon'];
-      //echo "Salmon: ". htmlentities($_POST['Salmon'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Salmon']);
    }
    if ($option_scallop) {
-      $product_name = "Scallop";
-      $product_qty = $_POST['Scallop'];
-      //echo "Scallop: ". htmlentities($_POST['Scallop'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Scallop']);
    }
    if ($option_oyster) {
-      $product_name = "Oyster";
-      $product_qty = $_POST['Oyster'];
-      //echo "Oyster: ". htmlentities($_POST['Oyster'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Oyster']);
    }
    if ($option_laver) {
-      $product_name = "Laver";
-      $product_qty = $_POST['Laver'];
-      //echo "Laver: ". htmlentities($_POST['Laver'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Laver']);
    }
    if ($option_dried_squid) {
-      $product_name = "DriedSquid";
-      $product_qty = $_POST['DriedSquid'];
-      //echo "Dried Squid: ". htmlentities($_POST['DriedSquid'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['DriedSquid']);
    }
    
    // --Bread & Snacks--
@@ -394,100 +178,28 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Bread & Snacks--
    if ($option_popcorn) {
-      $product_name = "Popcorn";
-      $product_qty = $_POST['Popcorn'];
-      //echo "Popcorn: ". htmlentities($_POST['Popcorn'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Popcorn']);
    }
    if ($option_pretzel) {
-      $product_name = "Pretzel";
-      $product_qty = $_POST['Pretzel'];
-      //echo "Pretzel: ". htmlentities($_POST['Pretzel'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Pretzel']);
    }
    if ($option_baguette) {
-      $product_name = "Baguette";
-      $product_qty = $_POST['Baguette'];
-      //echo "Baguette: ". htmlentities($_POST['Baguette'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Baguette']);
    }
    if ($option_white_bread) {
-      $product_name = "WhiteBread";
-      $product_qty = $_POST['WhiteBread'];
-      //echo "White Bread: ". htmlentities($_POST['WhiteBread'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['WhiteBread']);
    }
    if ($option_melona) {
-      $product_name = "Melona";
-      $product_qty = $_POST['Melona'];
-      //echo "Melona: ". htmlentities($_POST['Melona'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Melona']);
    }
    if ($option_world_cone) {
-      $product_name = "WorldCone";
-      $product_qty = $_POST['WorldCone'];
-      //echo "World Cone: ". htmlentities($_POST['World_Cone'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['WorldCone']);
    }
    if ($option_skittles) {
-      $product_name = "Skittles";
-      $product_qty = $_POST['Skittles'];
-      //echo "Skittles: ". htmlentities($_POST['Skittles'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Skittles']);
    }
    if ($option_starburst) {
-      $product_name = "Starburst";
-      $product_qty = $_POST['Starburst'];
-      //echo "Starburst: ". htmlentities($_POST['Starburst'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Starburst']);
    }
    
    // --Processed Food--
@@ -502,134 +214,60 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    
    // --Processed Food--
    if ($option_udon_noodles) {
-      $product_name = "UdonNoodles";
-      $product_qty = $_POST['UdonNoodles'];
-      //echo "Udon Noodles: ". htmlentities($_POST['UdonNoodles'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['UdonNoodles']);
    }
    if ($option_soba_soodles) {
-      $product_name = "SobaNoodles";
-      $product_qty = $_POST['SobaNoodles'];
-      //echo "Soba Noodles: ". htmlentities($_POST['SobaNoodles'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['SobaNoodles']);
    }
    if ($option_blackberry_jam) {
-      $product_name = "BlackberryJam";
-      $product_qty = $_POST['BlackberryJam'];
-      //echo "Blackberry Jam: ". htmlentities($_POST['BlackberryJam'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['BlackberryJam']);
    }
    if ($option_apricot_jam) {
-      $product_name = "ApricotJam";
-      $product_qty = $_POST['ApricotJam'];
-      //echo "Apricot Jam: ". htmlentities($_POST['ApricotJam'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['ApricotJam']);
    }
    if ($option_cumin) {
-      $product_name = "Cumin";
-      $product_qty = $_POST['Cumin'];
-      //echo "Cumin: ". htmlentities($_POST['Cumin'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Cumin']);
    }
    if ($option_cinnamon) {
-      $product_name = "Cinnamon";
-      $product_qty = $_POST['Cinnamon'];
-      //echo "Cinnamon: ". htmlentities($_POST['Cinnamon'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['Cinnamon']);
    }
    if ($option_avocado_oil) {
-      $product_name = "AvocadoOil";
-      $product_qty = $_POST['AvocadoOil'];
-      //echo "Avocado Oil: ". htmlentities($_POST['AvocadoOil'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['AvocadoOil']);
    }
    if ($option_almond_oil) {
-      $product_name = "AlmondOil";
-      $product_qty = $_POST['AlmondOil'];
-      //echo "Almond Oil: ". htmlentities($_POST['AlmondOil'], ENT_QUOTES, "UTF-8");
-      $newproduct = array($product_name, $product_qty);
-      array_push($_SESSION['product'], $newproduct);
-      //--SQL
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
-      $result   = $conn->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
-      $result   = $conn->query($query);
+     ManageCartItem($_POST['AlmondOil']);
    }
    
+  echo <<<_END
+    <table style="width:100%">
+      <tr>
+        <td>Product Name</td>
+        <td>Quantity</td>
+        <td>Price</td>
+      </tr>
+  _END;
+  
   foreach($_SESSION['product'] as $cart_list) {
-    for($i = 0 ; $i < count($cart_list) ; $i++) {
-     if ($i == 1) {
-       $cart_list[$i] = intval($cart_list[$i]);
-       }
-     //echo '<td>'.$_SESSION['product'][$i].'</td>';
-    //var_dump($_SESSION['product']);
+      echo <<<_END
+        <tr>
+        <td>$cart_list[0]</td>
+        <td>$cart_list[1]</td>
+        <td>$cart_list[2] &nbsp Won</td>
+        </tr>        
+      _END;
+      
+    //echo $cart_list[$i]."\t";
+    //echo '<td>'.$_SESSION['product'][$i].'</td>';
+    //var_dump($cart_list[$i]);
     //print_r($cart_list);
-    echo ($cart_list[$i])."<br/>";
-    }
   }
+  
+  echo "</table>";
   
   // create mysqli object 
   //require_once 'config.php';  
   //$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-  //if ($conn->connect_error) die($conn->connect_error);
-
-  if ($option_fiji || $option_samdasoo) {
-    //select cost from products where productname = "Fiji";
-    $query = "SELECT cost FROM Products WHERE productname = '". $product_name."'";
-    $result   = $conn->query($query);
-    if (!$result) echo "SELECT failed: $query<br>" .
-      $conn->error . "<br><br>";
-      
-    // Perform query
-    if ($result && $result->num_rows > 0) {
-      while($row = $result->fetch_assoc()){
-        echo "Price: ". $row["cost"]. " Won <br>";
-      }
-    }
-  }
-  
+  //if ($conn->connect_error) die($conn->connect_error);  
    
   //--SQL
   /*

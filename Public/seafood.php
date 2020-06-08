@@ -58,6 +58,8 @@ th, td {
       <option value=3>3</option>
       <option value=4>4</option>
       </select>
+      <input type = "hidden" name = "product" value = "$productname">
+      <input type = "hidden" name = "price" value = "$price">
       <input type="submit" value="Add to Cart">
       <input type="submit" value="Buy Now" formaction="buy.php">
       </form>
