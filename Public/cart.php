@@ -313,7 +313,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <td>$cart_list[0]</td>
         <td>$cart_list[1]</td>
         <td>$cart_list[2] &nbsp Won</td>
-        </tr>        
+        
+        <form action = "cart.php" method='POST'>
+        <input type="hidden" name="delete_product" value="$cart_list[0]">
+        <td><input type = "submit" value="Delete" name="submit"/></td>
+        </tr>
+        </form>        
       _END;
       
       $order_price += $cart_list[2];
@@ -331,6 +336,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </tr>
   </table>
   _END;
+  
+  $option_delete = isset($_POST['submit']) ? $_POST['submit'] : false;
+  if($option_delete){
+     deleteItem($_POST['delete_product']);
+  }
+  
+  function deleteItem($product_name) {
+    $length = count($_SESSION['product']);
+    $index = 0;
+    
+    for($i = 0; $i < $length; $i++) {
+      if ($_SESSION['product'][$i][0] == $product_name) {
+        $index = $i;
+        //break;
+        }
+      print_r($_SESSION['product'][$i]);
+    }
+    unset($_SESSION['product'][$index]);
+    echo $length;
+    //$_SESSION['product'] = array_diff($_SESSION['product'], $index);
+  }
 //  echo "</table>";
   
   // create mysqli object 
