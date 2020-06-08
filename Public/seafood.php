@@ -49,7 +49,7 @@ th, td {
       echo <<<_END
       <td>$productname: $price Won
       <p><img src="pictures/$image" alt="$productname" style="width:128px;height:128px;"></p>
-      <br>description: $description<br>
+      <br>Description: $description<br>
       <form action="cart.php" method="post">
       <label for="$productname">Qty:</label>
       <select name="$productname" id="$productname">
