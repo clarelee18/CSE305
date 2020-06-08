@@ -42,15 +42,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   require_once 'config.php';  
   $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
   if ($conn->connect_error) die($conn->connect_error);
-  
-  $username = $_SESSION["username"];
-  $cartID = "SELECT sid FROM Manages WHERE username='$username'";
 
   // function for managing cart item
     function ManageCartItem($product_qty) {
       $con = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
       if ($con->connect_error) die($con->connect_error);
       
+      // Get specific cart of specific user
+      $username = $_SESSION["username"];
+      $query = "SELECT DISTINCT sid FROM Manages WHERE username='$username'";
+      $result   = $con->query($query);
+      $row = mysqli_fetch_assoc($result);
+      $cartID = $row['sid'];
+
+
+      if(mysqli_query($link, $sql)){
+        echo "Records added successfully.";
+    } else{
+        echo "ERROR: Could not able to execute $cartID. " . mysqli_error($link);
+    }
+
       $product_name = $_POST['product'];
       $product_price = intval($_POST['price']) * intval($product_qty);
       $newproduct = array($product_name, $product_qty, $product_price);
