@@ -42,7 +42,7 @@ if ($conn->connect_error) die($conn->connect_error);
      </nav>
     <!--remove the item list from the session after finish using it-->
     <!--update the following tables...
-            Payment - pid, payment_method, payment_date, payment_time
+            Payment - pid, payment_method
             User_Address - delivery_addr, postal_code
             User_Ordering - username, delivery_addr, contact_number
             Has (order history has payment) - oid, pid, sid

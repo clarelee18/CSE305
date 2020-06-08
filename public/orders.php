@@ -38,7 +38,7 @@ if ($conn->connect_error) die($conn->connect_error);
         </ul>
     </div>
      </nav>
-    <!--adding the details of the order: list, payment method, payment time, address....-->
+    <!--adding the details of the order: list (if possible...), payment method, address, contact number....-->
     <?php
     $username = $_SESSION["username"];
     $query = "SELECT DISTINCT sid FROM Manages WHERE username='$username'";
@@ -48,7 +48,6 @@ if ($conn->connect_error) die($conn->connect_error);
 
     $query = "SELECT oid FROM Has WHERE sid='$cartID'";
     $result = $con->query($query);
-
     while($row = mysqli_fetch_array($result)){
         $query = "SELECT * FROM Order_History WHERE oid='$row['oid']'";
         $result2 = $con->query($query2);
