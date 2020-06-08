@@ -50,10 +50,48 @@ if ($conn->connect_error) die($conn->connect_error);
     -->
 
     <!--to use the input value from order page-->
-    <?php $address =  $_POST["address"]; 
-          echo $address;
-          $contactNumber =  $_POST["number"]; 
-          echo $contactNumber;
-    ?> 
+    <?php $address =  $_POST["address"]; ?>
+    <?php $contactNumber =  $_POST["number"]; ?> 
+    
+    <?php
+      $totalCost = 0;
+      $totalquantity = 0;
+      foreach($_SESSION['product'] as $cart_list) {
+          for($i = 0 ; $i < count($cart_list) ; $i++) {
+          if ($i == 1) {
+              $cart_list[$i] = intval($cart_list[$i]);
+              $totalquantity = $totalquantity + intval($cart_list[$i]);
+          }
+          if ($i == 2){
+              $totalCost = $totalCost + intval($cart_list[$i]);
+          }
+          echo ($cart_list[$i])."<br/>";
+          }
+          echo "<br>";
+      }
+      $paymentFee = 0;
+      if($totalCost < 40000){
+          $paymentFee = 2000;
+      }
+      
+      echo $address;
+      echo $contactNumber;
+    
+      $query = "SELECT MAX(oid) FROM Order_History";
+      $result   = $conn->query($query);
+      //$row = mysqli_fetch_assoc($result);
+      //$oidLast = $row['oid']+1;
+      
+      $oidLast = 0;
+      if ($result && $result->num_rows > 0) {
+        while($row = $result->fetch_assoc()){
+          $oidLast = $row["MAX(oid)"]+1;
+        }
+      }
+      $query1 = "insert into order_history (oid, total_price, total_quantity) values ($oidLast, $totalCost, $totalquantity)";
+      $result1 = $conn->query($query1);
+      echo $oidLast;
+        
+    ?>
 </body>
 </html>

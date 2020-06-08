@@ -88,8 +88,8 @@ if ($conn->connect_error) die($conn->connect_error);
         <p>Payment Fee: <?php echo $paymentFee; ?> </p>
 
         <?php
-        $fee = $_SESSION[$paymentFee];
-        $totalFee = $_SESSION[$paymentFee];
+        //$fee = $_SESSION[$paymentFee];
+        //$totalFee = $_SESSION[$paymentFee];
         
         ?>
 
