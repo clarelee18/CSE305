@@ -43,6 +43,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
   if ($conn->connect_error) die($conn->connect_error);
   
+  $username = $_SESSION["username"];
+  $cartID = "SELECT sid FROM Manages WHERE username='$username'";
+
   // function for managing cart item
     function ManageCartItem($product_qty) {
       $con = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -55,9 +58,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       //--SQL
       //addProduct($product_name, $product_qty);
       //need to modify query statement???
-      $query = "INSERT INTO Made_of (sid, productname) VALUES (1, '$product_name')";
+      $query = "INSERT INTO Made_of (sid, productname) VALUES ('$cartID', '$product_name')";
       $result   = $con->query($query);
-      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid=1";
+      $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid='$cartID'";
       $result   = $con->query($query);
     }
 

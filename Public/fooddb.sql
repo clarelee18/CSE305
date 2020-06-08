@@ -350,10 +350,10 @@ INSERT INTO Order_Shipping_Fee (total_price, delivery_charge) VALUES
 
 INSERT INTO Shopping_Cart (sid, number_of_items) VALUES 
 (1, 0),
-(2, 2),
-(3, 3),
-(4, 5),
-(5, 10)
+(2, 0),
+(3, 0),
+(4, 0),
+(5, 0)
 ;
 
 INSERT INTO Belongs_to (productname, subcategory) VALUES 
