@@ -45,7 +45,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to MyPage.</h1>
     </div>
-  <br><h3>User information: </h3>
+  <br><h2>User information: </h2>
     <p>
         <?php 
             $username = $_SESSION["username"];
@@ -62,17 +62,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 }
             }
 
-            echo "<br><br>Saved Addresses & Contact Numbers";
+            echo "<br><br><h5>Saved Addresses & Contact Numbers</h5>";
 
             $username = $_SESSION["username"];
             // echo $username;
-            $result = mysqli_query($conn, "SELECT * From User_Ordering WHERE username='$username'");
-            if (!$result) die ("Database access failed: " . $conn->error);
-            $resultCheck = mysqli_num_rows($result);
+            $result1 = mysqli_query($conn, "SELECT * From User_Ordering WHERE username='$username'");
+            //if (!$result1) die ("Database access failed: " . $conn->error);
+            $resultCheck = mysqli_num_rows($result1);
             if ($resultCheck > 0) {
                 // echo ' has rows:<br>';
-                while ($row = mysqli_fetch_array($result)) {
+                while ($row = mysqli_fetch_array($result1)) {
+                    $delivery_addr = $row['delivery_addr'];
+                    $result2 = mysqli_query($conn, "SELECT * From User_Address WHERE delivery_addr= '$delivery_addr'");
+                    if (!$result2) die ("Database access failed: " . $conn->error);
+                    $row2 = mysqli_fetch_array($result2);
                     echo '<br>Address: '   . $row['delivery_addr']   . '<br>';
+                    echo 'Postal code: '   . $row2['postal_code']   . '<br>';
                     echo 'Contact Number: '    . $row['contact_number']    . '<br>';
                 }
             }

@@ -59,9 +59,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       //addProduct($product_name, $product_qty);
       //need to modify query statement???
       $query = "INSERT INTO Made_of (sid, productname) VALUES ('$cartID', '$product_name')";
-      $result   = $con->query($query);
+      $result = $con->query($query);
+      //if (!$result) die ("Database access failed: " . $conn->error);
       $query = "UPDATE Shopping_Cart SET number_of_items = number_of_items+'$product_qty' WHERE sid='$cartID'";
-      $result   = $con->query($query);
+      $result = $con->query($query);
+      //if (!$result) die ("Database access failed: " . $conn->error);
     }
 
   // --Water & Beverages--
