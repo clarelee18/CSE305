@@ -66,7 +66,7 @@ if (mysqli_connect_errno()){
         <label for="number">Contact Number: </label><br>
         <input type="text" id="number" name="number"><br><br>
         <input type="submit" value="Confirm">
-        </form><br>
+        </form><br><br>
         <p>Total Cost: <?php echo $totalCost; ?> </p>
 
         <?php
@@ -79,9 +79,7 @@ if (mysqli_connect_errno()){
 
     <!--adding the details of the order: list, payment method, payment time, address....-->
     <!--Things that have to be done: 
-        1. Store the order info into db 
-        2. tells the total amount of the payment **
-        3. tells if the payment fee is needed **
+        1. Store the order info into db (inside orders.php possibly)
         4. once hit confirm, Remove the items in the cart (Session info)
     -->
     <p>
