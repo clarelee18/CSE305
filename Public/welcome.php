@@ -50,6 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 }
             }
 
+            echo "<br><br>Saved Addresses & Contact Numbers";
 
             $username = $_SESSION["username"];
             // echo $username;
