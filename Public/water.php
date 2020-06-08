@@ -50,7 +50,7 @@ th, td {
       <td>$productname: $price Won
       <p><img src="pictures/$image" alt="$productname" style="width:128px;height:128px;"></p>
       <br>Description: $description<br>
-      <form action="cart.php" method="post">
+      <form action="cart.php" method="post">      
       <label for="$productname">Qty:</label>
       <select name="$productname" id="$productname">
       <option value=1>1</option>
@@ -58,6 +58,8 @@ th, td {
       <option value=3>3</option>
       <option value=4>4</option>
       </select>
+      <input type = "hidden" name = "product" value = "$productname">
+      <input type = "hidden" name = "price" value = "$price">
       <input type="submit" value="Add to Cart">
       <input type="submit" value="Buy Now" formaction="buy.php">
       </form>
