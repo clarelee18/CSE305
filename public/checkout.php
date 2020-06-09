@@ -13,15 +13,29 @@ if ($conn->connect_error) die($conn->connect_error);
 
 <head>
     <title>Checkout</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
 </head>
 
 <body>
-<p><a href="index.php"><h2>Homepage</h2></a></p>
-    <p><a href="cart.php" class="btn btn-primary">Back to cart</a></p>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">Online Grocery</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="welcome.php">My Page</a></li>
+         </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
     <h2>Checkout</h2>
     <h3>Order list: <br></h3><?php
      foreach($_SESSION['product'] as $cart_list) {
