@@ -351,10 +351,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         $index = $i;
         //break;
         }
-      print_r($_SESSION['product'][$i]);
+      //print_r($_SESSION['product'][$i]);
     }
     unset($_SESSION['product'][$index]);
-    echo $length;
+    //echo $length;
     //$_SESSION['product'] = array_diff($_SESSION['product'], $index);
   }
 //  echo "</table>";
