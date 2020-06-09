@@ -54,9 +54,7 @@ session_start();
     </ul>
   </div>
 </nav>
-  
 <h2>Bread & Snacks</h2>
-
   <table style="width:100%">
   <tr>
     <td><h3>Snacks</h3></td>

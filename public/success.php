@@ -48,7 +48,8 @@ if ($conn->connect_error) die($conn->connect_error);
             Has (order history has payment) - oid, pid, sid
             Paid_for (payment paid for shopping cart) - sid, pid
     -->
-
+    <div class="container pt-4"><h2>Order success!</h2></div>
+    <div class="container pt-3">
     <!--to use the input value from order page-->
     <?php $address =  $_POST["address"]; ?>
     <?php $contactNumber =  $_POST["number"]; ?> 
@@ -74,8 +75,8 @@ if ($conn->connect_error) die($conn->connect_error);
           $paymentFee = 2000;
       }
       
-      echo $address;
-      echo $contactNumber;
+      echo "Address: ".$address."<br/>";
+      echo "Contact number: ".$contactNumber;
     
       $query = "SELECT MAX(oid) FROM Order_History";
       $result   = $conn->query($query);
@@ -99,5 +100,6 @@ if ($conn->connect_error) die($conn->connect_error);
 
       $_SESSION["product"] = array();
     ?>
+    </div>
 </body>
 </html>

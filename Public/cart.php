@@ -42,7 +42,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </ul>
   </div>
   </nav>
-  
+  <div class="container pt=2">
   <h2>Cart</h2>
   <p><a href="checkout.php" class="btn btn-primary">Checkout</a></p>
 
@@ -378,6 +378,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       mysqli_close($conn);
       
   ?>
+  </div>
   
 </body>
 </html>
