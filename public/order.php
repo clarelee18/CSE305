@@ -58,9 +58,16 @@ if ($conn->connect_error) die($conn->connect_error);
             }
         ?><br><br>
 
-        <p>Payment Method: <?php echo $_POST["payOption"]; ?></p><br>
+        <!--<p>Payment Method: <?php 
+        $payOption = $_POST["payOption"];
+        echo $payOption; 
+        ?></p><br>-->
 
         <?php 
+        $payOption = $_POST["payOption"];
+        echo "Payment Method: ".$payOption. "<br>";
+        $_SESSION["payment"] = $payOption;
+        
         function displayContact () {
             echo <<<_END
             <td>

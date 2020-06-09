@@ -51,8 +51,10 @@ if ($conn->connect_error) die($conn->connect_error);
     <div class="container pt-4"><h2>Order success!</h2></div>
     <div class="container pt-3">
     <!--to use the input value from order page-->
-    <?php $address =  $_POST["address"]; ?>
-    <?php $contactNumber =  $_POST["number"]; ?> 
+    <?php 
+      $address =  $_POST["address"]; 
+      $contactNumber =  $_POST["number"];
+      $payment =  $_SESSION["payment"]; ?> 
     
     <?php
       $totalCost = 0;
@@ -76,7 +78,8 @@ if ($conn->connect_error) die($conn->connect_error);
       }
       
       echo "Address: ".$address."<br/>";
-      echo "Contact number: ".$contactNumber;
+      echo "Contact number: ".$contactNumber."<br/>";
+      echo "Payment method: ".$payment."<br/>";
     
       $query = "SELECT MAX(oid) FROM Order_History";
       $result   = $conn->query($query);
@@ -92,13 +95,50 @@ if ($conn->connect_error) die($conn->connect_error);
       // order_history
       $query1 = "insert into order_history (oid, total_price, total_quantity) values ($oidLast, $totalCost, $totalquantity)";
       $result1 = $conn->query($query1);
-      echo $oidLast;
+      echo $oidLast."<br/>";
       
       // Order_Shipping_Fee
       $query2 = "insert into order_shipping_fee (total_price, delivery_charge) values ($totalCost, $paymentFee)";
-      $result2 = $conn->query($query2);  
+      $result2 = $conn->query($query2);
+      
+      // Payment - pid, payment_method, payment_time, payment_date
+      $query3 = "SELECT MAX(pid) FROM Payment";
+      $result3   = $conn->query($query3);
+      
+      $pidLast = 0;
+      if ($result3 && $result3->num_rows > 0) {
+        while($row = $result3->fetch_assoc()){
+          $pidLast = $row["MAX(pid)"]+1;
+        }
+      }
+      echo $pidLast."<br/>";
+      
+      date_default_timezone_set('Asia/Seoul');
+      $timezone = date_default_timezone_get();
+      $date = date('Y-m-d', time());
+      $current_time = date('H:i:s', time());
+      $query4 = "insert into payment (pid, payment_method, payment_time, payment_date) values ($pidLast, '".$payment."', '".$current_time."', '".$date."')";
+      $result4   = $conn->query($query4);
+      
+      /*
+      var_dump($pidLast);
+      var_dump($date);
+      var_dump($current_time);
+      var_dump($query4);
+      echo "timezone: ".$timezone."<br/>";
+      echo "date: ".$date."<br/>";
+      echo "current time: ".$current_time."<br/>";
+      */
+  /*Payment (
+  pid INTEGER NOT NULL,
+  payment_method VARCHAR(128) NOT NULL,
+  payment_time TIME NOT NULL,
+  payment_date DATE NOT NULL,
+  PRIMARY KEY (pid)
+  );*/
 
       $_SESSION["product"] = array();
+      $_SESSION["payment"] = "";
     ?>
     </div>
 </body>
