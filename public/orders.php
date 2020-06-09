@@ -43,13 +43,14 @@ if ($conn->connect_error) die($conn->connect_error);
     $username = $_SESSION["username"];
     $query = "SELECT DISTINCT sid FROM Manages WHERE username='$username'";
     $result   = $con->query($query);
+    if ($conn->connect_error) die($conn->connect_error);
     $row = mysqli_fetch_assoc($result);
     $cartID = $row['sid'];
 
     $query = "SELECT oid FROM Has WHERE sid='$cartID'";
     $result = $con->query($query);
     while($row = mysqli_fetch_array($result)){
-        $query = "SELECT * FROM Order_History WHERE oid='$row['oid']'";
+        $query = "SELECT * FROM Order_History WHERE oid='$row['oid']' ";
         $result2 = $con->query($query2);
         while($row = mysqli_fetch_array($result2)){
             echo "<tr>";
