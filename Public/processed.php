@@ -81,7 +81,6 @@ session_start();
       <input type = "hidden" name = "product" value = "$productname">
       <input type = "hidden" name = "price" value = "$price">
       <input type="submit" value="Add to Cart">
-      <input type="submit" value="Buy Now" formaction="buy.php">
       </form>
       </td>
       _END;
